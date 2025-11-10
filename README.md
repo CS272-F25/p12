@@ -1,8 +1,6 @@
-# p12
+# p12 - Bucky's Brewers
 
-# Bucky's Brewers
-
-## Bucky's Brew
+## Bucky's Brew - https://cs272-f25.github.io/p12/
 
 Bucky's Brew is an online coffee shop that sells coffee and coffee related
 products, such as coffee beans, mugs, and brewing equipment. Users will be able
