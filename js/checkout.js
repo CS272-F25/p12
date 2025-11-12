@@ -1,40 +1,31 @@
-<div class="cart">
-  <h3>Your Cart</h3>
-  <ul id="cart-items"></ul>
-  <p>Total: $<span id="cart-total">0.00</span></p>
-</div>
 
+const TAX_RATE = 0.07;
 
-// Example of a basic in-browser cart
-const cartItems = [];
-const cartList = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
+document.addEventListener('DOMContentLoaded', () => {
+  const subtotalElem = document.getElementById('subtotal-amount');
+  const taxRateElem = document.getElementById('tax-rate');
+  const taxElem = document.getElementById('tax-amount');
+  const orderTotalElem = document.getElementById('order-total');
 
-function addToCart(itemName, price) {
-  cartItems.push({ itemName, price });
-  updateCart();
-}
+  if (!subtotalElem || !taxElem || !orderTotalElem) return;
 
-function updateCart() {
-  cartList.innerHTML = "";
-  let total = 0;
-  cartItems.forEach(item => {
-    total += item.price;
-    const li = document.createElement("li");
-    li.textContent = `${item.itemName} — $${item.price.toFixed(2)}`;
-    cartList.appendChild(li);
-  });
-  cartTotal.textContent = total.toFixed(2);
-}
+  if (taxRateElem) taxRateElem.textContent = `${(TAX_RATE * 100).toFixed(2).replace(/\.00$/, '')}%`;
 
-// Example usage:
-addToCart("Latte", 4.5);
-addToCart("Blueberry Muffin", 3.25);
+  try {
+    const stored = localStorage.getItem('cart_total');
+    const subtotal = stored !== null ? Number(stored) : 0;
+    const safeSubtotal = Number.isFinite(subtotal) ? subtotal : 0;
 
+    const tax = (safeSubtotal * TAX_RATE);
+    const total = (safeSubtotal + tax);
 
-<div class="cart">
-  <h3>Your Cart</h3>
-  <ul id="cart-items"></ul>
-  <p>Total: $<span id="cart-total">0.00</span></p>
-</div>
-
+    subtotalElem.textContent = safeSubtotal.toFixed(2);
+    taxElem.textContent = tax.toFixed(2);
+    orderTotalElem.textContent = total.toFixed(2);
+  } catch (err) {
+    console.error('Failed to read cart_total or compute totals', err);
+    subtotalElem.textContent = '0.00';
+    taxElem.textContent = '0.00';
+    orderTotalElem.textContent = '0.00';
+  }
+});
