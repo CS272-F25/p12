@@ -14,8 +14,11 @@ function renderMenuItems() {
   grid.innerHTML = '';
 
   ITEMS.forEach(item => {
+    const cardWrapper = document.createElement('div');
+    cardWrapper.classList.add('col-4', 'p-3');
+
     const card = document.createElement('div');
-    card.className = 'card';
+    card.classList.add('card', 'p-3');
 
     const img = document.createElement('img');
     img.src = `assets/images/${item.image}`;
@@ -37,7 +40,8 @@ function renderMenuItems() {
     btn.textContent = 'Add to Cart';
     card.appendChild(btn);
 
-    grid.appendChild(card);
+    cardWrapper.appendChild(card);
+    grid.appendChild(cardWrapper);
   });
 
   document.querySelectorAll(".add-cart").forEach(button => {
