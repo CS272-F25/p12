@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Bucky's Brew</title>
+    <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/checkoutcss.css" />
   </head>
   <body>
@@ -11,8 +12,8 @@
       <nav class="nav" aria-label="Main">
         
        <!-- Brand -->
-  <a class="brand" href="#">
-  <img src="assets/images/logo.webp" alt="Aurora logo" class="brand-logo" />
+  <a class="brand" href="index.html">
+  <img src="assets/images/logo.webp" alt="Bucky's Brew logo" class="brand-logo" />
   <span class="brand-text">Bucky's Brew</span>
 </a>
 
@@ -31,7 +32,7 @@
 
         <!-- Nav links -->
         <ul class="nav-links" role="menubar">
-          <li><a href="#" class="link active">Home</a></li>
+          <li><a href="index.html" class="link active">Home</a></li>
 
           <!-- Dropdown for Shop -->
           <li class="dropdown">
@@ -44,9 +45,9 @@
               </svg>
             </button>
             <ul class="dropdown-menu">
-              <li><a href="#" class="dropdown-item">Shop All</a></li>
-              <li><a href="#" class="dropdown-item">Products</a></li>
-              <li><a href="#" class="dropdown-item">Accessories</a></li>
+              <li><a href="shopall.html" class="dropdown-item">Shop All</a></li>
+              <li><a href="shop.html" class="dropdown-item">Products</a></li>
+              <li><a href="accessories.html" class="dropdown-item">Accessories</a></li>
             </ul>
           </li>
 
@@ -97,9 +98,15 @@
       </div>
     </header>
 
-
 <section class="checkout-section">
   <h2>Checkout</h2>
+
+  <!-- CART ITEMS WITH IMAGES -->
+  <div class="cart-preview">
+    <h3>Your Items</h3>
+    <ul id="cart-preview-list"></ul>
+  </div>
+
   <div class="order-summary">
     <h3>Order Summary</h3>
     <br />
@@ -108,6 +115,7 @@
     <p><strong>Total: $<span id="order-total">0.00</span></strong></p>
     <br />
   </div>
+
   <form id="checkout-form">
     <h3>Billing Information</h3>
     <label for="name">Full Name</label>
@@ -121,7 +129,7 @@
 
     <h3>Payment Details</h3>
     <label for="card">Card Number</label>
-    <input type="text" id="card" maxlength="19" placeholder="1234 5678 9012 3456" required />
+    <input type="text" id="card" maxlength="19" required />
 
     <label for="expiry">Expiry Date</label>
     <input type="text" id="expiry" placeholder="MM/YY" required />
@@ -133,7 +141,7 @@
   </form>
 </section>
 
-
-    <script src="js/checkout.js"></script>
+<script src="js/checkout.js"></script>
+  
   </body>
 </html>

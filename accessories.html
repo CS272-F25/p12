@@ -35,7 +35,7 @@
 
 			<!-- Nav Links -->
 			<ul class="nav-links" role="menubar">
-				<li><a href="#" class="link active">Home</a></li>
+				<li><a href="index.html" class="link active">Home</a></li>
 
 				<!-- Dropdown -->
 				<li class="dropdown">
@@ -83,7 +83,7 @@
 		<!-- Mobile Menu -->
 		<div id="mobileMenu" class="mobile-menu" hidden>
 			<ul>
-				<li><a href="#" class="link active">Home</a></li>
+				<li><a href="index.html" class="link active">Home</a></li>
 
 				<li class="mobile-dropdown">
 					<button class="dropdown-btn-mobile">Shop ▾</button>
@@ -106,65 +106,34 @@
 		<h1>Bucky's Brew</h1>
 	</header>
 
-<section class="info-section">
+	   <!-- Accessories Section -->
+    <section class="menu">
+        <h2>Accessories</h2>
+        <div id="menu-grid" class="menu-grid"></div>
+    </section>
 
-	<!-- Coffee 101 -->
-	<div class="info-box">
-		<h3>Coffee 101</h3>
-		<p>
-			Coffee roasts range from light to dark, each offering a unique flavor experience.
-			<strong>Light roasts</strong> are gently roasted, preserving natural fruity and floral notes
-			for a bright, delicate taste.
-		</p>
-		<br>
-		<p>
-			<strong>Medium roasts</strong> provide a balanced profile with moderate acidity, warm
-			sweetness, and subtle fruit—making them the most popular and versatile choice.
-		</p>
-		<br>
-		<p>
-			<strong>Dark roasts</strong> are roasted longer at higher temperatures, creating bold,
-			rich flavors with low acidity and deep notes of caramel, toasted nuts, and graham cracker.
-		</p>
-	</div>
-
-	<!-- Matcha Latte -->
-	<div class="info-box">
-		<h3>Discover the Art of Matcha Latte</h3>
-		<p>
-			Indulge in the creamy, vibrant world of matcha latte. A perfect blend of tradition and taste,
-			matcha latte offers a unique experience for both coffee and tea lovers.
-		</p>
-		<br>
-		<p>
-			<strong>What is Matcha Latte?</strong><br>
-			Matcha latte is a fusion of matcha green tea powder and milk, creating a rich, creamy beverage
-			that stands apart from ordinary tea. Explore our collection and learn how to make it at home.
-		</p>
-	</div>
-
-</section>
-	<!-- Product Menu -->
-	<section class="menu">
-		<h2>Our Products</h2>
-		<div id="menu-grid" class="menu-grid"></div>
-	</section>
-
-	<!-- Cart Section -->
-	<section class="cart-section">
-		<h2>Your Cart</h2>
-		<ul id="cart-items"></ul>
-
-		<p class="cart-total">
-			Total: $<span id="cart-total">0.00</span>
-		</p>
-
-		<div class="cart-buttons">
-			<button id="clear-cart">Clear Cart</button>
-		</div>
-	</section>
+    <!-- Cart -->
+    <section class="cart-section">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p class="cart-total">Total: $<span id="cart-total">0.00</span></p>
+        <button id="clear-cart">Clear Cart</button>
+    </section>
 
 	<script src="js/shop.js"></script>
-	<script src="js/coffee.js"></script>
+	<script src="js/accessories.js"></script>
+
+	<!-- Begin Footer -->
+		<footer class="footer">
+			<div class="footer-content">
+				<p>&copy; 2025 Bucky's Brew. All rights reserved.</p>
+				<nav>
+					<a href="privacypolicy.html">Privacy Policy</a>
+					<a href="tos.html">Terms</a>
+					<a href="contact.html">Contact</a>
+				</nav>
+			</div>
+		</footer>
+		<!-- End Footer -->
 </body>
 </html>

@@ -1,21 +1,15 @@
-// ===========================
-// PRODUCT LIST
-// ===========================
 const ITEMS = [
-  { id: 0, name: "Medium Roast Blend", price: 8, image: "mediumroast.webp" },
-  { id: 1, name: "Espresso Dark Roast Blend", price: 8, image: "espressodark.webp" },
-  { id: 2, name: "Vanilla Blend", price: 8, image: "vanilla.webp" },
-  { id: 3, name: "Light Roast Blend", price: 9, image: "lightroast.webp" },
-  { id: 4, name: "Peppermint Mocha Blend", price: 12, image: "peppermintmocha.webp" },
-  { id: 5, name: "Original Matcha", price: 10, image: "originalmatcha.webp" },
-  { id: 6, name: "Vanilla Matcha", price: 10, image: "vanillamatcha.webp" },
-  { id: 7, name: "Honey Matcha", price: 11, image: "honeymatcha.webp" },
+  { id: 0, name: 'Cup and Saucer', price: 12, image: 'cupands.webp' },
+  { id: 1, name: 'French Press', price: 25, image: 'frenchpress.webp' },
+  { id: 2, name: 'Tall Glass Cup', price: 18, image: 'glass.webp' },
+  { id: 3, name: 'Short Glass Cup', price: 14, image: 'glasscup.webp' },
+  { id: 4, name: 'Reusable Straws', price: 7, image: 'straws.webp' },
+  { id: 5, name: 'Whisk', price: 16, image: 'whisk.webp' },
+  { id: 6, name: 'Matcha Candle', price: 20, image: 'matchacandle.webp' },
+  { id: 7, name: 'Coffee Candle', price: 20, image: 'coffeecandle.webp' },
 ];
 
 
-// ===========================
-// RENDER SHOP ITEMS
-// ===========================
 function renderMenuItems() {
   const grid = document.getElementById("menu-grid");
   if (!grid) return;
@@ -56,10 +50,6 @@ function renderMenuItems() {
 
 document.addEventListener("DOMContentLoaded", renderMenuItems);
 
-
-// ===========================
-// CART SYSTEM
-// ===========================
 
 let cartItems = [];
 

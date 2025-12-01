@@ -5,7 +5,9 @@
   --bg: 250 247 243;
 }
 
-/* General */
+/* ---------------------- */
+/* GLOBAL / BODY          */
+/* ---------------------- */
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: rgb(var(--bg));
@@ -14,97 +16,136 @@ body {
   padding: 0;
 }
 
-/* Header */
+/* ---------------------- */
+/* HEADER (Bootstrap Safe)*/
+/* ---------------------- */
 .coffee-header {
   text-align: center;
-  background: linear-gradient(135deg, rgb(var(--primary)), rgb(var(--accent)));
-  color: white;
   padding: 3rem 1rem;
-}
-.coffee-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.3rem;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    rgb(var(--primary)),
+    rgb(var(--accent))
+  );
 }
 
-/* Menu Section */
+.coffee-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: .3rem;
+}
+
+/* ---------------------- */
+/* MENU SECTION           */
+/* ---------------------- */
 .menu {
   text-align: center;
   padding: 3rem 1rem;
 }
+
 .menu h2 {
   font-size: 2rem;
   color: rgb(var(--primary));
   margin-bottom: 2rem;
 }
+
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
   max-width: 1000px;
   margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
-.card {
-  background: white;
-  border-radius: 12px;
+
+/* ---------------------- */
+/* COFFEE CARD            */
+/* (renamed from .card to avoid Bootstrap conflict) */
+/* ---------------------- */
+.coffee-card {
+  background: #fff;
+  border-radius: .75rem; /* Bootstrap radii */
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.08);
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
   padding-bottom: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+
+  transition: transform 0.3s ease;
+  min-height: 350px;
 }
-.card:hover {
+
+.coffee-card:hover {
   transform: translateY(-5px);
 }
-.card img {
+
+.coffee-card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
 }
-.card h3 {
-  margin: 0.5rem 0 0;
+
+.coffee-card h3 {
+  margin: .5rem 0 0;
+  padding: 0 1rem;
 }
-.card p {
+
+.coffee-card p {
   color: rgb(var(--primary));
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: .5rem;
+  padding: 0 1rem;
 }
+
+/* Add to Cart */
 .add-cart {
   background: rgb(var(--primary));
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
   cursor: pointer;
   transition: background 0.3s ease;
+  margin-top: auto;
 }
+
 .add-cart:hover {
   background: rgb(var(--accent));
 }
 
-/* Cart Section */
+/* ---------------------- */
+/* CART SECTION           */
+/* ---------------------- */
 .cart-section {
   max-width: 500px;
   margin: 3rem auto;
   background: white;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  border-radius: .75rem;
+  box-shadow: 0 0.6rem 1.25rem rgba(0,0,0,0.1);
 }
+
 .cart-section h2 {
-  color: rgb(var(--primary));
   text-align: center;
+  color: rgb(var(--primary));
   margin-bottom: 1rem;
 }
+
 #cart-items {
-  list-style: none;
   padding: 0;
 }
+
 #cart-items li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: .5rem 0;
   border-bottom: 1px solid rgba(0,0,0,0.1);
 }
+
+/* Remove button */
 .remove-item {
   background: none;
   border: none;
@@ -112,30 +153,75 @@ body {
   cursor: pointer;
   font-size: 1rem;
 }
+
 .remove-item:hover {
   color: rgb(var(--accent));
 }
+
 .cart-total {
-  font-weight: bold;
   text-align: right;
-  margin-top: 1rem;
+  font-weight: bold;
   color: rgb(var(--primary));
+  margin-top: 1rem;
 }
+
+/* Cart buttons */
 .cart-buttons {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
 }
+
 .cart-buttons button {
   background: rgb(var(--primary));
-  color: white;
+  color: #fff;
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
+  padding: .6rem 1.2rem;
+  border-radius: .5rem;
   cursor: pointer;
   transition: background 0.3s ease;
 }
+
 .cart-buttons button:hover {
   background: rgb(var(--accent));
 }
 
+/* ---------------------- */
+/* INFO SECTION           */
+/* ---------------------- */
+.info-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.info-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: .75rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.08);
+}
+
+.info-box h3 {
+  font-size: 1.6rem;
+  color: rgb(var(--primary));
+  margin-bottom: 1rem;
+}
+
+.info-box p {
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Thumbnail in cart */
+.cart-thumb {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: .375rem;
+  margin-right: 8px;
+}
