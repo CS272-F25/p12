@@ -1,6 +1,6 @@
-// ===========================
-// PRODUCT LIST
-// ===========================
+/* =========================================
+   PRODUCT LIST
+========================================= */
 const ITEMS = [
   { id: 0, name: "Medium Roast Blend", price: 8, image: "mediumroast.webp" },
   { id: 1, name: "Espresso Dark Roast Blend", price: 8, image: "espressodark.webp" },
@@ -12,10 +12,65 @@ const ITEMS = [
   { id: 7, name: "Honey Matcha", price: 11, image: "honeymatcha.webp" },
 ];
 
+/* =========================================
+   CART STORAGE HELPERS
+========================================= */
+function loadCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
 
-// ===========================
-// RENDER SHOP ITEMS
-// ===========================
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+/* =========================================
+   ADD TO CART  (STACK QUANTITIES)
+========================================= */
+function addToCart(id) {
+  let cart = loadCart();
+  const item = ITEMS.find(i => i.id === id);
+  if (!item) return;
+
+  const existing = cart.find(i => i.id === id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ ...item, quantity: 1 });
+  }
+
+  saveCart(cart);
+  updateCartUI();
+}
+
+/* =========================================
+   CHANGE QUANTITY
+========================================= */
+function changeQty(id, amount) {
+  let cart = loadCart();
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+
+  item.quantity += amount;
+  if (item.quantity <= 0) {
+    cart = cart.filter(i => i.id !== id);
+  }
+
+  saveCart(cart);
+  updateCartUI();
+}
+
+/* =========================================
+   REMOVE ITEM
+========================================= */
+function removeItem(id) {
+  let cart = loadCart().filter(i => i.id !== id);
+  saveCart(cart);
+  updateCartUI();
+}
+
+/* =========================================
+   RENDER SHOP ITEMS
+========================================= */
 function renderMenuItems() {
   const grid = document.getElementById("menu-grid");
   if (!grid) return;
@@ -23,121 +78,76 @@ function renderMenuItems() {
   grid.innerHTML = "";
 
   ITEMS.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "card";
+    grid.innerHTML += `
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/images/${item.image}" class="card-img-top" alt="${item.name}" style="height:170px; object-fit:cover;">
 
-    card.innerHTML = `
-      <img src="assets/images/${item.image}" alt="${item.name}">
-      <h3>${item.name}</h3>
-      <p>$${item.price.toFixed(2)}</p>
-      <button 
-        class="add-cart" 
-        data-name="${item.name}" 
-        data-price="${item.price}" 
-        data-image="${item.image}">
-          Add to Cart
-      </button>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${item.name}</h5>
+            <p class="card-text mb-3">$${item.price.toFixed(2)}</p>
+
+            <button class="btn btn-primary w-100 mt-auto"
+                    onclick="addToCart(${item.id})">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
     `;
-
-    grid.appendChild(card);
-  });
-
-  // Add event listeners
-  document.querySelectorAll(".add-cart").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const name = btn.dataset.name;
-      const price = Number(btn.dataset.price);
-      const image = btn.dataset.image;
-
-      addToCart(name, price, image);
-    });
   });
 }
 
 document.addEventListener("DOMContentLoaded", renderMenuItems);
 
-
-// ===========================
-// CART SYSTEM
-// ===========================
-
-let cartItems = [];
-
-// Load existing cart
-try {
-  const storedCart = localStorage.getItem("cart_items");
-  if (storedCart) cartItems = JSON.parse(storedCart);
-} catch (e) {
-  console.error("Error loading cart:", e);
-}
-
-// DOM
-const cartList = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
-const clearBtn = document.getElementById("clear-cart");
-
-
-// Add to cart (now includes image)
-function addToCart(name, price, image) {
-  cartItems.push({ name, price, image });
-  saveCart();
-  updateCartUI();
-}
-
-
-// Save cart + total
-function saveCart() {
-  localStorage.setItem("cart_items", JSON.stringify(cartItems));
-
-  const total = cartItems.reduce((sum, item) => sum + item.price, 0);
-  localStorage.setItem("cart_total", total.toFixed(2));
-}
-
-
-// Update cart UI
+/* =========================================
+   RENDER CART UI
+========================================= */
 function updateCartUI() {
-  if (!cartList || !cartTotal) return;
+  const list = document.getElementById("cart-items");
+  const totalBox = document.getElementById("cart-total");
 
-  cartList.innerHTML = "";
+  if (!list || !totalBox) return;
+
+  let cart = loadCart();
+  list.innerHTML = "";
   let total = 0;
 
-  cartItems.forEach((item, index) => {
-    total += item.price;
+  cart.forEach(item => {
+    total += item.price * item.quantity;
 
-    const li = document.createElement("li");
+    list.innerHTML += `
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="d-flex gap-3 align-items-center">
+          <img src="assets/images/${item.image}" style="width:45px; height:45px; border-radius:6px; object-fit:cover;">
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>${item.quantity} × $${item.price.toFixed(2)}</small>
+          </div>
+        </div>
 
-    li.innerHTML = `
-      <img src="assets/images/${item.image}" class="cart-thumb">
-      ${item.name} - $${item.price.toFixed(2)}
-      <button class="remove-item" data-index="${index}">✖</button>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, -1)">−</button>
+          <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, 1)">+</button>
+          <button class="btn btn-sm btn-danger" onclick="removeItem(${item.id})">✖</button>
+        </div>
+      </li>
     `;
-
-    cartList.appendChild(li);
   });
 
-  cartTotal.textContent = total.toFixed(2);
-
-  // Remove item listeners
-  document.querySelectorAll(".remove-item").forEach(btn => {
-    btn.addEventListener("click", e => {
-      const i = Number(e.target.dataset.index);
-      cartItems.splice(i, 1);
-      saveCart();
-      updateCartUI();
-    });
-  });
+  totalBox.textContent = total.toFixed(2);
 }
 
+// Load when page opens
+updateCartUI();
 
-// Clear cart
+/* =========================================
+   CLEAR CART
+========================================= */
+const clearBtn = document.getElementById("clear-cart");
 if (clearBtn) {
   clearBtn.addEventListener("click", () => {
-    cartItems = [];
-    saveCart();
+    saveCart([]);
     updateCartUI();
   });
 }
-
-
-// Initial load
-updateCartUI();

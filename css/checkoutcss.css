@@ -1,162 +1,114 @@
-/* ---------------------- */
-/* RESET + THEME COLORS   */
-/* ---------------------- */
 
-*, *::before, *::after { box-sizing: border-box; }
-body, h1, h3, p, ul { margin: 0; }
-ul { list-style: none; padding: 0; }
-a { text-decoration: none; color: inherit; }
 
-:root {
-  --bg: 250 247 243;
-  --text: 40 30 20;
-  --primary: 164 113 72;
-  --accent: 193 154 107;
-}
-
-/* ---------------------- */
-/* BACKGROUND             */
-/* ---------------------- */
-body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  color: rgb(var(--text));
-  background:
-    radial-gradient(1200px 500px at 10% -10%, rgba(var(--accent), .18), transparent 60%),
-    radial-gradient(1200px 500px at 90% -20%, rgba(var(--primary), .2), transparent 60%),
-    rgb(var(--bg));
-}
-
-/* ---------------------- */
-/* HEADER (Bootstrap Safe)*/
-/* ---------------------- */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,.85);
-  backdrop-filter: blur(12px);
+.site-header,
+.navbar {
+  background: rgba(255,255,255,0.9) !important;
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(var(--primary), .15);
 }
 
-.nav {
-  max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  padding: .7rem 1rem;
+.brand-logo,
+.navbar-brand img {
+  height: 50px !important;
+  width: auto !important;
 }
 
-.brand-logo {
-  height: 50px;
-}
 
-/* ---------------------- */
-/* CHECKOUT SECTION       */
-/* ---------------------- */
 
 .checkout-section {
-  max-width: 600px;
-  margin: 4rem auto;
-  background: #fff;
-  padding: 2rem;
-  border-radius: .75rem;           /* Bootstrap radius scale */
-  box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,.1); /* matches Bootstrap shadow-lg */
+  padding: 2rem 0;
 }
 
 .checkout-section h2,
 .checkout-section h3 {
   color: rgb(var(--primary));
-  margin-bottom: .75rem;
+  font-weight: 700;
 }
 
-/* ---------------------- */
-/* CART PREVIEW           */
-/* ---------------------- */
 
-.cart-preview {
-  margin-bottom: 2rem;
+#cart-preview-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 #cart-preview-list li {
-  display: flex !important;
+  display: flex;
   align-items: center;
-  margin-bottom: .75rem;
-  padding-bottom: .5rem;
-  border-bottom: 1px solid #eee;
+  gap: 0.75rem;
+  padding: .75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
-/* -- FIXED IMG SIZES -- */
-.cart-preview img,
-#cart-preview-list img,
-.checkout-section .cart-thumb {
-  width: 60px !important;
-  height: 60px !important;
-  object-fit: cover !important;
-  border-radius: .5rem !important; /* Bootstrap scale */
-  margin-right: .75rem !important;
-  flex-shrink: 0;
+#cart-preview-list img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: .5rem;
 }
 
-/* ---------------------- */
-/* ORDER SUMMARY          */
-/* ---------------------- */
+.cart-item-name {
+  font-weight: 500;
+}
+
 
 .order-summary p {
-  margin: .25rem 0;
+  margin: .3rem 0;
   font-size: 1rem;
 }
 
-/* ---------------------- */
-/* FORM (Bootstrap Style) */
-/* ---------------------- */
-
-/* Makes your inputs look like .form-control */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="number"],
-input:not([type="checkbox"]) {
-  width: 100%;
-  padding: .65rem .75rem;
-  border: 1px solid #ccc;
-  border-radius: .375rem;
-  font-size: 1rem;
-  margin-top: .3rem;
-  background-color: #fff;
-  transition: border-color .2s ease;
+.order-summary strong {
+  font-size: 1.25rem;
+  color: rgb(var(--primary));
 }
 
-input:focus {
-  border-color: rgb(var(--primary));
-  outline: none;
-  box-shadow: 0 0 0 .2rem rgba(var(--primary), .15);
-}
 
 label {
-  font-weight: 500;
-  margin-top: 1rem;
+  font-weight: 600;
 }
 
-/* ---------------------- */
-/* BUTTON (Bootstrap Safe)*/
-/* ---------------------- */
+.form-control {
+  border-radius: .45rem !important;
+}
 
+/* Brown focus ring */
+.form-control:focus {
+  border-color: rgb(var(--primary)) !important;
+  box-shadow: 0 0 0 .25rem rgba(var(--primary), .20) !important;
+}
+
+
+
+/* General brown button */
+.btn-brown,
 .btn-checkout {
-  background: rgb(var(--primary));
-  color: #fff;
-  padding: .9rem 1.5rem;
-  margin-top: 1.5rem;
-  border: none;
-  width: 100%;
-  font-size: 1.1rem;
-  border-radius: .5rem;
-  cursor: pointer;
-  transition: background .3s ease;
-  display: block;
+  background-color: rgb(var(--primary)) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: .5rem !important;
+  padding: .75rem 1.2rem;
+  font-weight: 600;
+  transition: background-color .25s ease;
 }
 
+/* Hover state */
+.btn-brown:hover,
 .btn-checkout:hover {
-  background: rgb(var(--accent));
+  background-color: rgb(var(--accent)) !important;
+}
+
+/* Make checkout button full width */
+.btn-checkout {
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+.card {
+  border-radius: .75rem !important;
+  box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.10);
+  border: none;
+}
+
+.card h4 {
+  color: rgb(var(--primary));
 }

@@ -1,170 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- PAGE SPECIFIC -->
-		<title>Bucky's Brew</title>
-		<!-- END SPECIFIC -->
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="css/styles.css" />
-		<link rel="stylesheet" href="css/about.css" />
-		<!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
-	</head>
-	<body>
-		<!-- SITE HEADER -->
-		<header class="site-header" id="siteHeader">
-			<nav class="nav" aria-label="Main">
-				<!-- Brand -->
-				<a class="brand" href="index.html">
-					<img
-						src="assets/images/logo.webp"
-						alt="Aurora logo"
-						class="brand-logo"
-					/>
-					<span class="brand-text">Bucky's Brew</span>
-				</a>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>About – Bucky's Brew</title>
 
-				<!-- Search -->
-				<form class="search-bar" role="search">
-					<input type="search" placeholder="Search..." aria-label="Search" />
-					<button type="submit" aria-label="Search">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="18"
-							height="18"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<circle cx="11" cy="11" r="8"></circle>
-							<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-						</svg>
-					</button>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/about.css" />
+</head>
+
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg bg-light py-3 shadow-sm">
+	<div class="container">
+
+		<a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+			<img src="assets/images/logo.webp" alt="Bucky's Brew" height="50">
+			<span class="fw-bold">Bucky's Brew</span>
+		</a>
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="mainNav">
+			<ul class="navbar-nav ms-auto align-items-lg-center">
+
+				<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Shop</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="shopall.html">Shop All</a></li>
+						<li><a class="dropdown-item" href="shop.html">Products</a></li>
+						<li><a class="dropdown-item" href="accessories.html">Accessories</a></li>
+					</ul>
+				</li>
+
+				<li class="nav-item"><a class="nav-link active fw-semibold" href="about.html">About</a></li>
+				<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+				<form class="d-flex ms-lg-3 my-2 my-lg-0">
+					<input class="form-control me-2" type="search" placeholder="Search">
+					<button class="btn btn-outline-dark" type="submit">Search</button>
 				</form>
 
-				<!-- Nav links -->
-				<ul class="nav-links" role="menubar">
-					<li><a href="index.html" class="link">Home</a></li>
-					<li><a href="shop.html" class="link">Shop</a></li>
-					<li><a href="about.html" class="link">About</a></li>
-					<li><a href="contact.html" class="link">Contact</a></li>
-					<!-- Checkout -->
-					<li>
-						<a
-							href="checkout.html"
-							class="link checkout-link"
-							aria-label="Checkout"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<circle cx="9" cy="21" r="1"></circle>
-								<circle cx="20" cy="21" r="1"></circle>
-								<path
-									d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
-								></path>
-							</svg>
-							<span>Checkout</span>
-						</a>
-					</li>
-				</ul>
+				<li class="nav-item ms-lg-3">
+					<a href="checkout.html" class="btn btn-primary d-flex align-items-center gap-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor">
+							<circle cx="9" cy="21" r="1"></circle>
+							<circle cx="20" cy="21" r="1"></circle>
+							<path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 
+									2 0 0 0 2-1.6L23 6H6"></path>
+						</svg>
+						Checkout
+					</a>
+				</li>
 
-				<!-- Mobile menu toggle -->
-				<button
-					class="menu-toggle"
-					id="menuToggle"
-					aria-expanded="false"
-					aria-controls="mobileMenu"
-					aria-label="Toggle navigation"
-				>
-					<span class="bar"></span><span class="bar"></span
-					><span class="bar"></span>
-				</button>
-			</nav>
+			</ul>
+		</div>
 
-			<!-- Mobile dropdown menu -->
-			<div id="mobileMenu" class="mobile-menu" hidden>
-				<ul>
-					<li><a href="index.html" class="link">Home</a></li>
-					<li><a href="shop.html" class="link">Shop</a></li>
-					<li><a href="about.html" class="link">About</a></li>
-					<li><a href="contact.html" class="link">Contact</a></li>
-					<li>
-						<a href="checkout.html" class="link">Checkout</a>
-					</li>
-				</ul>
-			</div>
-		</header>
-		<!-- END HEADER -->
+	</div>
+</nav>
 
-	<!-- TOP BANNER IMAGE -->
-	<section class="about-banner">
-		<img src="assets/images/uwmadison.jpg" alt="About Bucky's Brew" />
-	</section>
+<!-- ===================== HERO BANNER ===================== -->
+<section class="position-relative about-hero">
+	<img src="assets/images/uwmadison.jpg" class="w-100 hero-img" alt="Madison campus background">
 
-	<!-- ABOUT SECTION -->
-<section class="about-section">
-		
-		<h1 class="about-title">Welcome to Bucky’s Brew</h1>
+	<div class="hero-overlay"></div>
+
+	<div class="hero-content text-center text-white">
+		<h1 class="display-4 fw-bold">Our Story</h1>
+		<p class="lead">Inspired by Madison. Crafted for everyone.</p>
+	</div>
+</section>
+
+<!-- ===================== ABOUT CONTENT ===================== -->
+<section class="container py-5">
+
+	<div class="text-center mb-5">
+		<h2 class="about-title">Welcome to Bucky’s Brew</h2>
 		<p class="about-intro">
-			Bucky’s Brew is your online destination for handcrafted coffee, premium matcha,
-			and cozy café flavors — all delivered straight to your door. We blend the warmth of
-			a local coffee shop with the convenience of online shopping, creating a place where
-			coffee lovers, students, and everyday explorers can find their perfect brew.
+			Born in Madison and built by students, Bucky’s Brew blends cozy café culture with modern online convenience.
+			We craft coffee, matcha, and accessories that bring warmth and energy into every moment of your day.
 		</p>
+	</div>
 
-		<h2>Our Story</h2>
-		<p>
-			What started as a college passion project quickly grew into something more.
-			Born in the heart of Madison, Bucky’s Brew was built by students who wanted to
-			create a brand that feels comforting, energizing, and uniquely Wisconsin.
-		</p>
-		<p>
-			Today, we proudly offer small-batch blends, flavorful matcha, and curated accessories
-			that elevate your daily ritual — whether you're studying, working, or unwinding.
-		</p>
+	<!-- STORY  -->
+	<div class="row align-items-center mb-5">
+		<div class="col-lg-6 mb-4 mb-lg-0">
+			<img src="assets/images/coffee.jpg" class="img-fluid rounded shadow" alt="Coffee story image">
+		</div>
+		<div class="col-lg-6">
+			<h3 class="fw-bold mb-3 text-primary-brown">How It Started</h3>
+			<p>
+				Bucky’s Brew began as a passion project fueled by late nights, early classes, and a love for good coffee.
+				Founded by students at UW–Madison, we wanted to create a brand that captured the comfort of a local café
+				while being accessible to everyone.
+			</p>
+			<p>
+				Today, we serve small-batch blends, flavorful matcha, and curated accessories that transform your daily
+				ritual into something you genuinely look forward to.
+			</p>
+		</div>
+	</div>
 
-		<h2>What We Believe In</h2>
-		<ul class="about-values">
-			<li><strong>Quality Ingredients:</strong> We source premium beans, rich matcha, and real flavors.</li>
-			<li><strong>Craftsmanship:</strong> Every blend, product, and flavor is carefully handcrafted.</li>
-			<li><strong>Comfort & Community:</strong> Inspired by campus life, built for coffee lovers everywhere.</li>
-			<li><strong>Simplicity:</strong> Great coffee should be easy, approachable, and enjoyable.</li>
-		</ul>
+	<!-- VALUES -->
+	<div class="text-center my-5">
+		<h3 class="fw-bold mb-4 text-primary-brown">What We Believe In</h3>
 
-		<h2>Behind the Brew</h2>
-		<p>
-			Bucky’s Brew is independently run, designed, and curated. What you see — from visuals
-			to product descriptions to the blends themselves — is created with care and creativity.
-			Our goal is to bring moments of joy and comfort into your everyday routine.
-		</p>
-
-		<p>Ready to explore? Discover your new favorite drink below.</p>
-
-		<a href="shop.html" class="hero-btn about-btn">Shop Our Drinks</a>
-	</section>
-			<!-- Begin Footer -->
-		<footer class="footer">
-			<div class="footer-content">
-				<p>&copy; 2025 Bucky's Brew. All rights reserved.</p>
-				<nav>
-					<a href="privacypolicy.html">Privacy Policy</a>
-					<a href="tos.html">Terms</a>
-					<a href="contact.html">Contact</a>
-				</nav>
+		<div class="row g-4">
+			<div class="col-md-3">
+				<div class="p-4 shadow-sm rounded h-100">
+					<h5 class="fw-bold mb-2">Quality</h5>
+					<p>We source high-quality beans, ceremonial matcha, and real, rich flavors.</p>
+				</div>
 			</div>
-		</footer>
-		<!-- End Footer -->
-	</body>
+			<div class="col-md-3">
+				<div class="p-4 shadow-sm rounded h-100">
+					<h5 class="fw-bold mb-2">Craft</h5>
+					<p>Everything is thoughtfully created — from blends to packaging.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="p-4 shadow-sm rounded h-100">
+					<h5 class="fw-bold mb-2">Community</h5>
+					<p>Inspired by campus life and built for coffee lovers everywhere.</p>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="p-4 shadow-sm rounded h-100">
+					<h5 class="fw-bold mb-2">Comfort</h5>
+					<p>Your daily rituals deserve warmth, ease, and joy.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- BEHIND THE BREW -->
+	<div class="row align-items-center mt-5">
+		<div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+			<img src="assets/images/matcha.jpg" class="img-fluid rounded shadow" alt="Matcha image">
+		</div>
+		<div class="col-lg-6">
+			<h3 class="fw-bold mb-3 text-primary-brown">Behind the Brew</h3>
+			<p>
+				Bucky’s Brew is independently designed, operated, and curated. Every product and every detail — from
+				web design to blend creation — is crafted with care.
+			</p>
+			<p>
+				We’re here to brighten your mornings, fuel your workdays, and add a little comfort to your evenings.
+			</p>
+		</div>
+	</div>
+
+	<div class="text-center mt-5">
+		<a href="shop.html" class="btn btn-primary px-4 py-2 rounded-pill fs-5">
+			Shop Our Drinks
+		</a>
+	</div>
+
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-dark text-white py-4 mt-5">
+	<div class="container d-flex justify-content-between align-items-center">
+		<p class="m-0">&copy; 2025 Bucky's Brew. All rights reserved.</p>
+		<nav class="d-flex gap-3">
+			<a href="privacypolicy.html" class="text-white">Privacy Policy</a>
+			<a href="tos.html" class="text-white">Terms</a>
+			<a href="contact.html" class="text-white">Contact</a>
+		</nav>
+	</div>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
