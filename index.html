@@ -1,168 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<!-- PAGE SPECIFIC -->
-		<title>Bucky's Brew</title>
-		<!-- END SPECIFIC -->
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="css/styles.css" />
-		<!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
-	</head>
-	<body>
-		<!-- SITE HEADER -->
-		<header class="site-header" id="siteHeader">
-			<nav class="nav" aria-label="Main">
-				<!-- Brand -->
-				<a class="brand" href="index.html">
-					<img
-						src="assets/images/logo.webp"
-						alt="Aurora logo"
-						class="brand-logo"
-					/>
-					<span class="brand-text">Bucky's Brew</span>
-				</a>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Bucky's Brew</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar navbar-expand-lg bg-light py-3 shadow-sm">
+	<div class="container">
+
+		<!-- Brand -->
+		<a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+			<img src="assets/images/logo.webp" alt="Bucky's Brew" height="50">
+			<span class="fw-bold">Bucky's Brew</span>
+		</a>
+
+		<!-- Mobile Toggle -->
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+			data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Nav Items -->
+		<div class="collapse navbar-collapse" id="mainNav">
+
+			<!-- Left Nav -->
+			<ul class="navbar-nav ms-auto align-items-lg-center">
+
+				<li class="nav-item">
+					<a class="nav-link active" href="index.html">Home</a>
+				</li>
+
+				<!-- Dropdown -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown">Shop</a>
+
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="shopall.html">Shop All</a></li>
+						<li><a class="dropdown-item" href="shop.html">Products</a></li>
+						<li><a class="dropdown-item" href="accessories.html">Accessories</a></li>
+					</ul>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="about.html">About</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="contact.html">Contact</a>
+				</li>
 
 				<!-- Search -->
-				<form class="search-bar" role="search">
-					<input type="search" placeholder="Search..." aria-label="Search" />
-					<button type="submit" aria-label="Search">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="18"
-							height="18"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<circle cx="11" cy="11" r="8"></circle>
-							<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-						</svg>
-					</button>
+				<form class="d-flex ms-lg-3 my-2 my-lg-0" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search">
+					<button class="btn btn-outline-dark" type="submit">Search</button>
 				</form>
 
-				<!-- Nav links -->
-				<ul class="nav-links" role="menubar">
-					<li><a href="index.html" class="link">Home</a></li>
-					<li><a href="shop.html" class="link">Shop</a></li>
-					<li><a href="about.html" class="link">About</a></li>
-					<li><a href="contact.html" class="link">Contact</a></li>
-					<!-- Checkout -->
-					<li>
-						<a
-							href="checkout.html"
-							class="link checkout-link"
-							aria-label="Checkout"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<circle cx="9" cy="21" r="1"></circle>
-								<circle cx="20" cy="21" r="1"></circle>
-								<path
-									d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
-								></path>
-							</svg>
-							<span>Checkout</span>
-						</a>
-					</li>
-				</ul>
+				<!-- Cart -->
+				<li class="nav-item ms-lg-3">
+					<a href="checkout.html" class="btn btn-primary d-flex align-items-center gap-1">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="9" cy="21" r="1"></circle>
+							<circle cx="20" cy="21" r="1"></circle>
+							<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 
+									2 0 0 0 2-1.61L23 6H6"></path>
+						</svg>
+						Checkout
+					</a>
+				</li>
+			</ul>
 
-				<!-- Mobile menu toggle -->
-				<button
-					class="menu-toggle"
-					id="menuToggle"
-					aria-expanded="false"
-					aria-controls="mobileMenu"
-					aria-label="Toggle navigation"
-				>
-					<span class="bar"></span><span class="bar"></span
-					><span class="bar"></span>
-				</button>
-			</nav>
+		</div>
+	</div>
+</nav>
 
-			<!-- Mobile dropdown menu -->
-			<div id="mobileMenu" class="mobile-menu" hidden>
-				<ul>
-					<li><a href="index.html" class="link">Home</a></li>
-					<li><a href="shop.html" class="link">Shop</a></li>
-					<li><a href="about.html" class="link">About</a></li>
-					<li><a href="contact.html" class="link">Contact</a></li>
-					<li>
-						<a href="checkout.html" class="link">Checkout</a>
-					</li>
-				</ul>
-			</div>
-		</header>
-		<!-- END HEADER -->
 
-		<section class="hero">
-			<div class="hero-content">
-				<h1>Welcome to Bucky's Brew</h1>
-				<p>Explore our Products</p>
-				<a href="shop.html" class="hero-btn">Shop Now</a>
-			</div>
-		</section>
+<section class="hero custom-hero">
+  <img src="assets/images/landing.jpg" class="hero-photo" alt="Coffee">
+
+  <div class="hero-text-overlay">
+    <h1>Welcome to Bucky's Brew</h1>
+    <p>Explore our Products</p>
+    <a href="shop.html" class="hero-btn">Shop Now</a>
+  </div>
+</section>
 
 		<!-- 2. Featured Collections -->
-		<section class="featured">
-			<h2>Featured Collections</h2>
-			<div class="featured-grid">
-				<div class="card">
-					<img
-						src="assets/images/coffee.jpg"
-						alt="Coffee & Espresso Collection"
-					/>
-					<h3>Coffee & Espresso</h3>
-				</div>
-				<div class="card">
-					<img src="assets/images/matcha.jpg" alt="Matcha Collection" />
-					<h3>Matcha</h3>
-				</div>
-				<div class="card">
-					<img
-						src="assets/images/accessories.jpg"
-						alt="Accessories Collection"
-					/>
-					<h3>Accessories</h3>
-				</div>
-			</div>
-		</section>
+<section class="featured">
+	<h2>Featured Collections</h2>
+	<div class="featured-grid">
+
+		<div class="card">
+			<img src="assets/images/coffee.jpg" alt="Coffee & Espresso Collection" />
+			<h3>Coffee & Espresso</h3>
+			<a href="shop.html" class="btn">Shop Now</a>
+		</div>
+
+		<div class="card">
+			<img src="assets/images/matcha.jpg" alt="Matcha Collection" />
+			<h3>Matcha</h3>
+			<a href="shop.html" class="btn">Shop Now</a>
+		</div>
+
+		<div class="card">
+			<img src="assets/images/accessories.jpg" alt="Accessories Collection" />
+			<h3>Accessories</h3>
+			<a href="accessories.html" class="btn">Shop Now</a>
+		</div>
+
+	</div>
+</section>
 
 		<!-- 3. About -->
 		<section class="about">
 			<h2>Our Story</h2>
 			<p>
-				Founded in Madison, Aurora blends timeless design with sustainable
-				craftsmanship. Every product is made to last — ethically, beautifully,
-				and thoughtfully.
+		Bucky’s Brew began with a simple idea: coffee should feel like home. 
+		Fueled by the spirit of Madison and the cozy energy of campus life, 
+		we set out to craft brews and accessories that bring warmth into every cup.
+		From small–batch blends to thoughtfully designed essentials, 
+		every item we offer is made with intention, community, and comfort in mind.
 			</p>
 			<a href="about.html" class="btn">Learn More</a>
 		</section>
 
 		<!-- 4. Testimonials -->
 		<section class="testimonials">
-			<h2>What People Say</h2>
-			<div class="quotes">
-				<blockquote>
-					“I’ve never felt quality like this — every detail feels personal.”
-					<cite>— Emma L.</cite>
-				</blockquote>
-				<blockquote>
-					“The brown aesthetic is stunning, and delivery was quick!”
-					<cite>— Jordan K.</cite>
-				</blockquote>
+		<h2>What People Say</h2>
+		<div class="quotes">
+
+		<blockquote>
+			“Bucky’s Brew has become part of my morning ritual. 
+			The flavors are rich, the quality is consistent, 
+			and everything feels made with care.”
+			<cite>— Emily R.</cite>
+		</blockquote>
+
+		<blockquote>
+			“I ordered a bag of their espresso and a mug — both exceeded my expectations. 
+			The packaging was beautiful and the coffee tastes amazing.”
+			<cite>— Marcus T.</cite>
+		</blockquote>
+
+		<blockquote>
+			“The matcha is some of the best I've tried. Smooth, vibrant, and not too bitter — 
+			I’m officially obsessed.”
+			<cite>— Haley B.</cite>
+		</blockquote>	
 			</div>
 		</section>
 
@@ -177,17 +169,23 @@
 			</div>
 		</section>
 
+		<!-- JS -->
+<script src="js/bootstrap.bundle.min.js"></script>
+
 		<!-- Begin Footer -->
-		<footer class="footer">
-			<div class="footer-content">
-				<p>&copy; 2025 Bucky's Brew. All rights reserved.</p>
-				<nav>
-					<a href="privacypolicy.html">Privacy Policy</a>
-					<a href="tos.html">Terms</a>
-					<a href="contact.html">Contact</a>
-				</nav>
-			</div>
-		</footer>
+<!-- FOOTER -->
+<footer class="bg-dark text-white py-4 mt-5">
+	<div class="container d-flex justify-content-between align-items-center">
+		<p class="m-0">&copy; 2025 Bucky's Brew. All rights reserved.</p>
+		<nav class="d-flex gap-3">
+			<a href="privacypolicy.html" class="text-white">Privacy Policy</a>
+			<a href="tos.html" class="text-white">Terms</a>
+			<a href="contact.html" class="text-white">Contact</a>
+		</nav>
+	</div>
+</footer>
+
 		<!-- End Footer -->
+
 	</body>
 </html>

@@ -6,7 +6,7 @@
 	<title>Bucky's Brew</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" href="css/main.css" />
-	<link rel="stylesheet" href="css/contact.css" />
+	<link rel="stylesheet" href="css/coffee.css" />
 </head>
 
 <body>
@@ -87,42 +87,43 @@
 	<h1 class="display-5 fw-bold">Bucky's Brew</h1>
 </header>
 
-	<!-- CONTACT CONTENT -->
-	<section class="contact-section">
-		<div class="contact-container">
+	<!-- PRODUCT MENU -->
+<section class="container my-5">
+	<h2 class="text-center mb-4 fw-bold">Shop All Our Products and Accessories</h2>
+	<div id="menu-grid" class="row g-4"></div>
+</section>
 
-			<!-- Contact Info -->
-			<div class="contact-info">
-				<h2>Contact Us</h2>
-				<p>We love hearing from our customers. Whether you have a question, feedback, or a wholesale inquiry—send us a message anytime.</p>
+<!-- CART SECTION -->
+<section class="container my-5">
 
-				<ul>
-					<li><strong>Email:</strong> support@buckysbrew.com</li>
-					<li><strong>Phone:</strong> (608) 555-0123</li>
-					<li><strong>Location:</strong> Madison, WI</li>
-					<li><strong>Hours:</strong> Mon–Fri, 8am–5pm</li>
-				</ul>
-			</div>
+	<h2 class="fw-bold text-center mb-4">Your Cart</h2>
 
-			<!-- Contact Form -->
-			<div class="contact-form">
-				<h2>Send Us a Message</h2>
+	<div class="card shadow-sm border rounded p-4">
 
-				<form action="#" method="POST">
-					<input type="text" name="name" placeholder="Your Name" required />
-					<input type="email" name="email" placeholder="Your Email" required />
-					<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+		<ul id="cart-items" class="list-group mb-3"></ul>
 
-					<button type="submit" class="hero-btn">Send Message</button>
-				</form>
-			</div>
+		<p class="fs-5 fw-semibold">
+			Total: $<span id="cart-total">0.00</span>
+		</p>
 
+		<!-- BUTTONS SIDE BY SIDE -->
+		<div class="d-flex gap-3 mt-3">
+			<button id="clear-cart" class="btn btn-danger flex-fill">
+				Clear Cart
+			</button>
+
+			<a href="checkout.html" class="btn btn-primary flex-fill">
+				Proceed to Checkout
+			</a>
 		</div>
-	</section>
+
+	</div>
+
+</section>
 
 <!-- JS -->
 <script src="js/bootstrap.bundle.min.js"></script>
-
+<script src="js/shop.js"></script>
 
 <!-- FOOTER -->
 <footer class="bg-dark text-white py-4 mt-5">
@@ -136,5 +137,5 @@
 	</div>
 </footer>
 
-	</body>
+</body>
 </html>
