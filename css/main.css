@@ -1,0 +1,269 @@
+/* ================================
+   ROOT COLOR PALETTE
+   Premium Coffee-Shop Theme
+================================ */
+:root {
+  --espresso: 45 32 20;          /* dark brown near-black */
+  --dark-roast: 68 45 30;        /* deep chocolate brown */
+  --medium-roast: 120 74 45;     /* your primary brown */
+  --caramel: 181 125 78;         /* warm accent */
+  --foam: 248 241 234;           /* creamy latte background */
+
+  /* Old variable names mapped */
+  --primary: var(--medium-roast);
+  --accent: var(--caramel);
+  --text: var(--espresso);
+  --bg: var(--foam);
+
+  --primary-brown: rgb(var(--medium-roast));
+  --accent-brown: rgb(var(--caramel));
+  --text-brown: rgb(var(--espresso));
+}
+
+
+/* ================================
+   GLOBAL BASE
+================================ */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+}
+
+*:focus {
+  outline: 3px solid rgba(var(--medium-roast), 0.7) !important;
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+section {
+  scroll-margin-top: 90px;
+}
+
+
+/* ================================
+   NAVBAR
+================================ */
+.navbar {
+  background: #fff !important;
+  border-bottom: 1px solid rgba(45, 32, 20, 0.12);
+  box-shadow: 0 2px 8px rgba(45, 32, 20, 0.06);
+}
+
+.navbar .nav-link {
+  color: rgb(var(--espresso)) !important;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.navbar .nav-link:hover {
+  color: rgb(var(--medium-roast)) !important;
+  text-decoration: underline;
+}
+
+.navbar-brand span {
+  color: rgb(var(--medium-roast));
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.navbar img {
+  height: 50px !important;
+}
+
+
+/* ================================
+   HERO SECTIONS
+================================ */
+.hero,
+.custom-hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+      rgba(45,32,20,0.55),
+      rgba(45,32,20,0.75)
+  );
+}
+
+.hero-text-overlay {
+  color: #fff;
+  max-width: 650px;
+  padding: 1rem;
+}
+
+.hero-text-overlay h1 {
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-weight: 800;
+}
+
+.hero-text-overlay p {
+  font-size: 1.2rem;
+  opacity: 0.92;
+}
+
+.hero-btn {
+  background: rgb(var(--medium-roast));
+  border-radius: 0.75rem;
+  padding: .85rem 1.7rem;
+  box-shadow: 0 6px 16px rgba(45,32,20,0.28);
+  transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: rgb(var(--caramel));
+  transform: translateY(-3px);
+}
+
+
+/* ================================
+   PAGE HEADERS (About, Shop, Contact)
+================================ */
+.coffee-header {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #fff;
+
+  background: linear-gradient(
+    135deg,
+    rgb(var(--medium-roast)),
+    rgb(var(--dark-roast))
+  );
+
+  box-shadow: inset 0 0 50px rgba(0,0,0,0.25);
+}
+
+.coffee-header h1 {
+  font-size: 2.8rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+
+/* ================================
+   GRID SYSTEM CLEANUP
+================================ */
+.menu-grid,
+.featured-grid,
+.gallery-grid,
+.info-section {
+  display: grid;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.menu-grid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.featured-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.gallery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.info-section {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+
+/* ================================
+   CARDS
+================================ */
+.card,
+.coffee-card,
+.featured .card,
+.info-box {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  box-shadow: 0 6px 20px rgba(45,32,20,0.12);
+  border: 1px solid rgba(45,32,20,0.07);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover,
+.coffee-card:hover,
+.info-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(45,32,20,0.18);
+}
+
+.card h3,
+.info-box h3 {
+  color: rgb(var(--medium-roast));
+  font-weight: 700;
+}
+
+.card p,
+.info-box p {
+  color: rgba(45, 32, 20, 0.85);
+}
+
+
+/* ================================
+   GLOBAL BUTTONS (Sitewide buttons)
+================================ */
+.btn,
+.btn-primary {
+  padding: .75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+/* Brown Buttons */
+.btn-primary,
+.about-btn,
+.btn-checkout {
+  background: rgb(var(--medium-roast));
+  color: #fff !important;
+  box-shadow: 0 4px 14px rgba(45,32,20,0.25);
+}
+
+.btn-primary:hover,
+.about-btn:hover,
+.btn-checkout:hover {
+  background: rgb(var(--caramel));
+  transform: translateY(-2px);
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+.footer,
+footer.bg-dark {
+  background: rgb(var(--dark-roast)) !important;
+  color: #f5eadd;
+  padding: 2rem 1rem;
+}
+
+.footer a,
+footer a {
+  color: #f3dcbc;
+}
+
+.footer a:hover,
+footer a:hover {
+  color: #fff;
+}

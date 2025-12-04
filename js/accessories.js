@@ -1,19 +1,19 @@
 /* =========================================
-   PRODUCT LIST
+   PRODUCT LIST (ACCESSORIES)
 ========================================= */
 const ITEMS = [
-  { id: 0, name: "Medium Roast Blend", price: 8, image: "mediumroast.webp" },
-  { id: 1, name: "Espresso Dark Roast Blend", price: 8, image: "espressodark.webp" },
-  { id: 2, name: "Vanilla Blend", price: 8, image: "vanilla.webp" },
-  { id: 3, name: "Light Roast Blend", price: 9, image: "lightroast.webp" },
-  { id: 4, name: "Peppermint Mocha Blend", price: 12, image: "peppermintmocha.webp" },
-  { id: 5, name: "Original Matcha", price: 10, image: "originalmatcha.webp" },
-  { id: 6, name: "Vanilla Matcha", price: 10, image: "vanillamatcha.webp" },
-  { id: 7, name: "Honey Matcha", price: 11, image: "honeymatcha.webp" },
+  { id: 0, name: 'Cup and Saucer', price: 12, image: 'cupands.webp' },
+  { id: 1, name: 'French Press', price: 25, image: 'frenchpress.webp' },
+  { id: 2, name: 'Tall Glass Cup', price: 18, image: 'glass.webp' },
+  { id: 3, name: 'Short Glass Cup', price: 14, image: 'glasscup.webp' },
+  { id: 4, name: 'Reusable Straws', price: 7, image: 'straws.webp' },
+  { id: 5, name: 'Whisk', price: 16, image: 'whisk.webp' },
+  { id: 6, name: 'Matcha Candle', price: 20, image: 'matchacandle.webp' },
+  { id: 7, name: 'Coffee Candle', price: 20, image: 'coffeecandle.webp' },
 ];
 
 /* =========================================
-   CART STORAGE HELPERS
+   CART STORAGE
 ========================================= */
 function loadCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
@@ -24,7 +24,7 @@ function saveCart(cart) {
 }
 
 /* =========================================
-   ADD TO CART  (STACK QUANTITIES)
+   ADD TO CART (STACK QUANTITIES)
 ========================================= */
 function addToCart(id) {
   let cart = loadCart();
@@ -51,6 +51,7 @@ function changeQty(id, amount) {
   if (!item) return;
 
   item.quantity += amount;
+
   if (item.quantity <= 0) {
     cart = cart.filter(i => i.id !== id);
   }
@@ -106,12 +107,11 @@ document.addEventListener("DOMContentLoaded", renderMenuItems);
 function updateCartUI() {
   const list = document.getElementById("cart-items");
   const totalBox = document.getElementById("cart-total");
-
   if (!list || !totalBox) return;
 
   let cart = loadCart();
-  list.innerHTML = "";
   let total = 0;
+  list.innerHTML = "";
 
   cart.forEach(item => {
     total += item.price * item.quantity;
@@ -129,7 +129,7 @@ function updateCartUI() {
         <div class="d-flex gap-2">
           <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, -1)">−</button>
           <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, 1)">+</button>
-          <button class="btn btn-sm btn-danger" onclick="removeItem(${item.id})">✖</button>
+          <button class="btn btn-sm btn-danger remove-item" onclick="removeItem(${item.id})">✖</button>
         </div>
       </li>
     `;
@@ -138,15 +138,14 @@ function updateCartUI() {
   totalBox.textContent = total.toFixed(2);
 }
 
-// Load when page opens
 updateCartUI();
 
 /* =========================================
    CLEAR CART
 ========================================= */
-const clearBtn = document.getElementById("clear-cart");
-if (clearBtn) {
-  clearBtn.addEventListener("click", () => {
+const clearBtn2 = document.getElementById("clear-cart");
+if (clearBtn2) {
+  clearBtn2.addEventListener("click", () => {
     saveCart([]);
     updateCartUI();
   });
