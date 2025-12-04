@@ -46,10 +46,19 @@
 				<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
 				<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 
-				<form class="d-flex ms-lg-3 mt-3 mt-lg-0">
-					<input class="form-control me-2" type="search" placeholder="Search">
-					<button class="btn btn-outline-dark">Search</button>
+				<form class="d-flex ms-lg-3 my-2 my-lg-0" role="search" id="search-form">
+					<input class="form-control me-2" type="search" placeholder="Search" id="search-input">
+					<button class="btn btn-outline-dark" type="submit">Search</button>
 				</form>
+				<script>
+				document.getElementById('search-form').addEventListener('submit', function(e) {
+					e.preventDefault();
+					const query = document.getElementById('search-input').value.trim();
+					if (query) {
+						window.location.href = `searchresult.html?query=${encodeURIComponent(query)}`;
+					}
+				});
+				</script>
 
 				<li class="nav-item ms-lg-3 mt-3 mt-lg-0">
 					<a href="checkout.html" class="btn btn-primary">
