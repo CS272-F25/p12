@@ -1,30 +1,18 @@
-// ===========================
-// PRODUCT LIST (Coffee + Accessories)
-// ===========================
-const ITEMS = [
-  { id: 0, name: "Medium Roast Blend", price: 8, image: "mediumroast.webp" },
-  { id: 1, name: "Espresso Dark Roast Blend", price: 8, image: "espressodark.webp" },
-  { id: 2, name: "Vanilla Blend", price: 8, image: "vanilla.webp" },
-  { id: 3, name: "Light Roast Blend", price: 9, image: "lightroast.webp" },
-  { id: 4, name: "Peppermint Mocha Blend", price: 12, image: "peppermintmocha.webp" },
-  { id: 5, name: "Original Matcha", price: 10, image: "originalmatcha.webp" },
-  { id: 6, name: "Vanilla Matcha", price: 10, image: "vanillamatcha.webp" },
-  { id: 7, name: "Honey Matcha", price: 11, image: "honeymatcha.webp" },
+let ITEMS = [];
 
-  { id: 8, name: "Cup and Saucer", price: 12, image: "cupands.webp" },
-  { id: 9, name: "French Press", price: 25, image: "frenchpress.webp" },
-  { id: 10, name: "Tall Glass Cup", price: 18, image: "glass.webp" },
-  { id: 11, name: "Short Glass Cup", price: 14, image: "glasscup.webp" },
-  { id: 12, name: "Reusable Straws", price: 7, image: "straws.webp" },
-  { id: 13, name: "Whisk", price: 16, image: "whisk.webp" },
-  { id: 14, name: "Matcha Candle", price: 20, image: "matchacandle.webp" },
-  { id: 15, name: "Coffee Candle", price: 20, image: "coffeecandle.webp" }
-];
+fetch("js/shopall.json")
+  .then(res => res.json())
+  .then(data => {
+    ITEMS = data;
+    console.log("Products loaded:", ITEMS);
+
+    renderMenuItems();
+    updateCartUI();
+  })
+  .catch(err => console.error("Error loading products.json:", err));
 
 
-/* =========================================
-   CART STORAGE (shared system)
-========================================= */
+
 function loadCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -34,9 +22,6 @@ function saveCart(cart) {
 }
 
 
-/* =========================================
-   ADD TO CART (Stacks Quantities)
-========================================= */
 function addToCart(id) {
   let cart = loadCart();
   const item = ITEMS.find(i => i.id === id);
@@ -54,10 +39,6 @@ function addToCart(id) {
   updateCartUI();
 }
 
-
-/* =========================================
-   CHANGE QUANTITY
-========================================= */
 function changeQty(id, amount) {
   let cart = loadCart();
   const item = cart.find(i => i.id === id);
@@ -74,10 +55,6 @@ function changeQty(id, amount) {
   updateCartUI();
 }
 
-
-/* =========================================
-   REMOVE ITEM
-========================================= */
 function removeItem(id) {
   const cart = loadCart().filter(i => i.id !== id);
   saveCart(cart);
@@ -85,9 +62,6 @@ function removeItem(id) {
 }
 
 
-/* =========================================
-   RENDER PRODUCTS
-========================================= */
 function renderMenuItems() {
   const grid = document.getElementById("menu-grid");
   if (!grid) return;
@@ -120,10 +94,6 @@ function renderMenuItems() {
 
 document.addEventListener("DOMContentLoaded", renderMenuItems);
 
-
-/* =========================================
-   RENDER CART UI
-========================================= */
 function updateCartUI() {
   const list = document.getElementById("cart-items");
   const totalBox = document.getElementById("cart-total");
@@ -161,10 +131,6 @@ function updateCartUI() {
 
 updateCartUI();
 
-
-/* =========================================
-   CLEAR CART
-========================================= */
 const clearBtn = document.getElementById("clear-cart");
 if (clearBtn) {
   clearBtn.addEventListener("click", () => {

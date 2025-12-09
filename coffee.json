@@ -1,0 +1,9 @@
+[
+  { "id": 0, "name": "Medium Roast Blend", "price": 8, "image": "mediumroast.webp" },
+  { "id": 1, "name": "Espresso Dark Roast Blend", "price": 8, "image": "espressodark.webp" },
+  { "id": 2, "name": "Vanilla Blend", "price": 8, "image": "vanilla.webp" },
+  { "id": 3, "name": "Light Roast Blend", "price": 9, "image": "lightroast.webp" },
+  { "id": 4, "name": "Peppermint Mocha Blend", "price": 12, "image": "peppermintmocha.webp" },
+  { "id": 5, "name": "Original Matcha", "price": 10, "image": "originalmatcha.webp" },
+  { "id": 6, "name": "Vanilla Matcha", "price": 10, "image": "vanillamatcha.webp" },
+  { "id": 7, "name": "Honey Matcha", "price": 11, "image": "honeymatcha.webp" }]

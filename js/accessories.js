@@ -1,20 +1,18 @@
-/* =========================================
-   PRODUCT LIST (ACCESSORIES)
-========================================= */
-const ITEMS = [
-  { id: 0, name: 'Cup and Saucer', price: 12, image: 'cupands.webp' },
-  { id: 1, name: 'French Press', price: 25, image: 'frenchpress.webp' },
-  { id: 2, name: 'Tall Glass Cup', price: 18, image: 'glass.webp' },
-  { id: 3, name: 'Short Glass Cup', price: 14, image: 'glasscup.webp' },
-  { id: 4, name: 'Reusable Straws', price: 7, image: 'straws.webp' },
-  { id: 5, name: 'Whisk', price: 16, image: 'whisk.webp' },
-  { id: 6, name: 'Matcha Candle', price: 20, image: 'matchacandle.webp' },
-  { id: 7, name: 'Coffee Candle', price: 20, image: 'coffeecandle.webp' },
-];
+let ITEMS = [];
 
-/* =========================================
-   CART STORAGE
-========================================= */
+fetch("accessories.json")
+  .then(res => res.json())
+  .then(data => {
+    ITEMS = data;
+    console.log("Products loaded:", ITEMS);
+
+    renderMenuItems();
+    updateCartUI();
+  })
+  .catch(err => console.error("Error loading products.json:", err));
+
+/* CART FUNCTIONS */
+
 function loadCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -23,9 +21,6 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-/* =========================================
-   ADD TO CART (STACK QUANTITIES)
-========================================= */
 function addToCart(id) {
   let cart = loadCart();
   const item = ITEMS.find(i => i.id === id);
@@ -42,9 +37,6 @@ function addToCart(id) {
   updateCartUI();
 }
 
-/* =========================================
-   CHANGE QUANTITY
-========================================= */
 function changeQty(id, amount) {
   let cart = loadCart();
   const item = cart.find(i => i.id === id);
@@ -60,21 +52,19 @@ function changeQty(id, amount) {
   updateCartUI();
 }
 
-/* =========================================
-   REMOVE ITEM
-========================================= */
 function removeItem(id) {
   let cart = loadCart().filter(i => i.id !== id);
   saveCart(cart);
   updateCartUI();
 }
 
-/* =========================================
-   RENDER SHOP ITEMS
-========================================= */
+/* RENDER MENU */
+
 function renderMenuItems() {
   const grid = document.getElementById("menu-grid");
   if (!grid) return;
+
+  if (ITEMS.length === 0) return; // Stops blank rendering BEFORE JSON loads
 
   grid.innerHTML = "";
 
@@ -99,11 +89,8 @@ function renderMenuItems() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", renderMenuItems);
+/* UPDATE CART DISPLAY */
 
-/* =========================================
-   RENDER CART UI
-========================================= */
 function updateCartUI() {
   const list = document.getElementById("cart-items");
   const totalBox = document.getElementById("cart-total");
@@ -129,7 +116,7 @@ function updateCartUI() {
         <div class="d-flex gap-2">
           <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, -1)">−</button>
           <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, 1)">+</button>
-          <button class="btn btn-sm btn-danger remove-item" onclick="removeItem(${item.id})">✖</button>
+          <button class="btn btn-sm btn-danger" onclick="removeItem(${item.id})">✖</button>
         </div>
       </li>
     `;
@@ -138,11 +125,6 @@ function updateCartUI() {
   totalBox.textContent = total.toFixed(2);
 }
 
-updateCartUI();
-
-/* =========================================
-   CLEAR CART
-========================================= */
 const clearBtn2 = document.getElementById("clear-cart");
 if (clearBtn2) {
   clearBtn2.addEventListener("click", () => {

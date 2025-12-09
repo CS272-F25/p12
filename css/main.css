@@ -1,15 +1,11 @@
-/* ================================
-   ROOT COLOR PALETTE
-   Premium Coffee-Shop Theme
-================================ */
+/*  ROOT COLOR PALETTE */
 :root {
-  --espresso: 45 32 20;          /* dark brown near-black */
-  --dark-roast: 68 45 30;        /* deep chocolate brown */
-  --medium-roast: 120 74 45;     /* your primary brown */
-  --caramel: 181 125 78;         /* warm accent */
-  --foam: 248 241 234;           /* creamy latte background */
+  --espresso: 45 32 20;          
+  --dark-roast: 68 45 30;        
+  --medium-roast: 120 74 45;    
+  --caramel: 181 125 78;        
+  --foam: 248 241 234;           
 
-  /* Old variable names mapped */
   --primary: var(--medium-roast);
   --accent: var(--caramel);
   --text: var(--espresso);
@@ -21,9 +17,7 @@
 }
 
 
-/* ================================
-   GLOBAL BASE
-================================ */
+/* GLOBAL BASE */
 body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   background: rgb(var(--bg));
@@ -48,9 +42,7 @@ section {
 }
 
 
-/* ================================
-   NAVBAR
-================================ */
+/* NAVBAR */
 .navbar {
   background: #fff !important;
   border-bottom: 1px solid rgba(45, 32, 20, 0.12);
@@ -79,9 +71,7 @@ section {
 }
 
 
-/* ================================
-   HERO SECTIONS
-================================ */
+/* HERO SECTIONS */
 .hero,
 .custom-hero {
   position: relative;
@@ -131,9 +121,7 @@ section {
 }
 
 
-/* ================================
-   PAGE HEADERS (About, Shop, Contact)
-================================ */
+/* PAGE HEADERS (About, Shop, Contact) */
 .coffee-header {
   text-align: center;
   padding: 4rem 1rem;
@@ -155,9 +143,7 @@ section {
 }
 
 
-/* ================================
-   GRID SYSTEM CLEANUP
-================================ */
+/* GRID SYSTEM CLEANUP */
 .menu-grid,
 .featured-grid,
 .gallery-grid,
@@ -185,9 +171,7 @@ section {
 }
 
 
-/* ================================
-   CARDS
-================================ */
+/*  CARDS */
 .card,
 .coffee-card,
 .featured .card,
@@ -219,9 +203,7 @@ section {
 }
 
 
-/* ================================
-   GLOBAL BUTTONS (Sitewide buttons)
-================================ */
+/* GLOBAL BUTTONS (Sitewide buttons) */
 .btn,
 .btn-primary {
   padding: .75rem 1.5rem;
@@ -248,9 +230,7 @@ section {
 }
 
 
-/* ================================
-   FOOTER
-================================ */
+/* FOOTER */
 .footer,
 footer.bg-dark {
   background: rgb(var(--dark-roast)) !important;

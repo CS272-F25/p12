@@ -1,20 +1,19 @@
-/* =========================================
-   PRODUCT LIST
-========================================= */
-const ITEMS = [
-  { id: 0, name: "Medium Roast Blend", price: 8, image: "mediumroast.webp" },
-  { id: 1, name: "Espresso Dark Roast Blend", price: 8, image: "espressodark.webp" },
-  { id: 2, name: "Vanilla Blend", price: 8, image: "vanilla.webp" },
-  { id: 3, name: "Light Roast Blend", price: 9, image: "lightroast.webp" },
-  { id: 4, name: "Peppermint Mocha Blend", price: 12, image: "peppermintmocha.webp" },
-  { id: 5, name: "Original Matcha", price: 10, image: "originalmatcha.webp" },
-  { id: 6, name: "Vanilla Matcha", price: 10, image: "vanillamatcha.webp" },
-  { id: 7, name: "Honey Matcha", price: 11, image: "honeymatcha.webp" },
-];
+let ITEMS = [];
 
-/* =========================================
-   CART STORAGE HELPERS
-========================================= */
+fetch("js/coffee.json")
+  .then(res => res.json())
+  .then(data => {
+    ITEMS = data;
+    console.log("Products loaded:", ITEMS);
+
+    renderMenuItems();
+    updateCartUI();
+  })
+  .catch(err => console.error("Error loading products.json:", err));
+
+
+
+/* CART STORAGE HELPERS */
 function loadCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -23,9 +22,7 @@ function saveCart(cart) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-/* =========================================
-   ADD TO CART  (STACK QUANTITIES)
-========================================= */
+//ADD TO CART  (STACK QUANTITIES)
 function addToCart(id) {
   let cart = loadCart();
   const item = ITEMS.find(i => i.id === id);
@@ -42,9 +39,7 @@ function addToCart(id) {
   updateCartUI();
 }
 
-/* =========================================
-   CHANGE QUANTITY
-========================================= */
+//HANGE QUANTITY 
 function changeQty(id, amount) {
   let cart = loadCart();
   const item = cart.find(i => i.id === id);
@@ -59,18 +54,14 @@ function changeQty(id, amount) {
   updateCartUI();
 }
 
-/* =========================================
-   REMOVE ITEM
-========================================= */
+//REMOVE ITEM
 function removeItem(id) {
   let cart = loadCart().filter(i => i.id !== id);
   saveCart(cart);
   updateCartUI();
 }
 
-/* =========================================
-   RENDER SHOP ITEMS
-========================================= */
+//RENDER SHOP ITEMS
 function renderMenuItems() {
   const grid = document.getElementById("menu-grid");
   if (!grid) return;
@@ -100,9 +91,7 @@ function renderMenuItems() {
 
 document.addEventListener("DOMContentLoaded", renderMenuItems);
 
-/* =========================================
-   RENDER CART UI
-========================================= */
+//RENDER CART UI
 function updateCartUI() {
   const list = document.getElementById("cart-items");
   const totalBox = document.getElementById("cart-total");

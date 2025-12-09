@@ -1,4 +1,4 @@
-/* CART SECTION           */
+
 .cart-section {
   max-width: 500px;
   margin: 3rem auto;
@@ -17,7 +17,6 @@
 #cart-items {
   padding: 0;
 }
-
 
 .add-cart {
   background: rgb(var(--primary)) !important;

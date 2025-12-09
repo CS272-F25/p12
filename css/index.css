@@ -1,8 +1,6 @@
 
 
-/* ================================
-   HERO SECTION
-================================ */
+/* HERO SECTION */
 .hero,
 .custom-hero {
   position: relative;
@@ -49,9 +47,7 @@
   background: rgb(var(--accent));
 }
 
-/* ================================
-   FEATURED COLLECTIONS
-================================ */
+/* FEATURED COLLECTIONS */
 .featured {
   padding: 4rem 1rem;
   background: rgb(252, 250, 247);
@@ -87,9 +83,7 @@
   margin-bottom: 1rem;
 }
 
-/* ================================
-   ABOUT SECTION
-================================ */
+/* ABOUT SECTION */
 .about {
   padding: 4rem 1rem;
   background: rgba(var(--accent), .12);
@@ -101,9 +95,7 @@
   margin: 0 auto 1.5rem;
 }
 
-/* ================================
-   TESTIMONIALS
-================================ */
+/* TESTIMONIALS */
 .testimonials {
   padding: 4rem 1rem;
   text-align: center;
@@ -119,9 +111,7 @@ blockquote {
   margin-bottom: 2rem;
 }
 
-/* ================================
-   GALLERY
-================================ */
+/* GALLERY */
 .gallery {
   padding: 4rem 1rem;
   text-align: center;
@@ -142,9 +132,7 @@ blockquote {
   border-radius: 10px;
 }
 
-/* ================================
-   FOOTER
-================================ */
+/* FOOTER */
 .footer {
   background: rgb(var(--primary));
   color: #fff;

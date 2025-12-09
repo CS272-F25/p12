@@ -1,6 +1,5 @@
-// ===========================
+
 // PRODUCT LIST (reuse from shop.js)
-// ===========================
 const ITEMS = [
 	{ id: 0, name: "Medium Roast Blend", price: 8, image: "mediumroast.webp" },
 	{ id: 1, name: "Espresso Dark Roast Blend", price: 8, image: "espressodark.webp" },
