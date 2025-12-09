@@ -1,6 +1,6 @@
 let ITEMS = [];
 
-fetch("accessories.json")
+fetch("js/accessories.json")
   .then(res => res.json())
   .then(data => {
     ITEMS = data;
