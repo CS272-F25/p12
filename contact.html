@@ -30,6 +30,7 @@
 					data-bs-target="#mainNav"
 					aria-controls="mainNav"
 					aria-expanded="false"
+					aria-label="Mobile Navigation Button"
 				>
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -74,14 +75,35 @@
 						</li>
 
 						<!-- Search -->
-						<form class="d-flex ms-lg-3 my-2 my-lg-0" role="search">
+						<form
+							class="d-flex ms-lg-3 my-2 my-lg-0"
+							role="search"
+							id="search-form"
+						>
 							<input
 								class="form-control me-2"
 								type="search"
 								placeholder="Search"
+								aria-label="Search Bar"
+								id="search-input"
 							/>
 							<button class="btn btn-outline-dark" type="submit">Search</button>
 						</form>
+						<script>
+							document
+								.getElementById('search-form')
+								.addEventListener('submit', function (e) {
+									e.preventDefault();
+									const query = document
+										.getElementById('search-input')
+										.value.trim();
+									if (query) {
+										window.location.href = `searchresult.html?query=${encodeURIComponent(
+											query,
+										)}`;
+									}
+								});
+						</script>
 
 						<!-- Cart -->
 						<li class="nav-item ms-lg-3">

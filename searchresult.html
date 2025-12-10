@@ -13,6 +13,7 @@
 		<!-- ===================== NAVBAR ===================== -->
 		<nav class="navbar navbar-expand-lg bg-light py-3 shadow-sm">
 			<div class="container">
+				<!-- Brand -->
 				<a
 					class="navbar-brand d-flex align-items-center gap-2"
 					href="index.html"
@@ -20,6 +21,8 @@
 					<img src="assets/images/logo.webp" alt="Bucky's Brew" height="50" />
 					<span class="fw-bold">Bucky's Brew</span>
 				</a>
+
+				<!-- Mobile Toggle -->
 				<button
 					class="navbar-toggler"
 					type="button"
@@ -27,14 +30,20 @@
 					data-bs-target="#mainNav"
 					aria-controls="mainNav"
 					aria-expanded="false"
+					aria-label="Mobile Navigation Button"
 				>
 					<span class="navbar-toggler-icon"></span>
 				</button>
+
+				<!-- Nav Items -->
 				<div class="collapse navbar-collapse" id="mainNav">
+					<!-- Left Nav -->
 					<ul class="navbar-nav ms-auto align-items-lg-center">
 						<li class="nav-item">
-							<a class="nav-link" href="index.html">Home</a>
+							<a class="nav-link active" href="index.html">Home</a>
 						</li>
+
+						<!-- Dropdown -->
 						<li class="nav-item dropdown">
 							<a
 								class="nav-link dropdown-toggle"
@@ -43,6 +52,7 @@
 								data-bs-toggle="dropdown"
 								>Shop</a
 							>
+
 							<ul class="dropdown-menu">
 								<li>
 									<a class="dropdown-item" href="shopall.html">Shop All</a>
@@ -55,12 +65,16 @@
 								</li>
 							</ul>
 						</li>
+
 						<li class="nav-item">
 							<a class="nav-link" href="about.html">About</a>
 						</li>
+
 						<li class="nav-item">
 							<a class="nav-link" href="contact.html">Contact</a>
 						</li>
+
+						<!-- Search -->
 						<form
 							class="d-flex ms-lg-3 my-2 my-lg-0"
 							role="search"
@@ -70,10 +84,28 @@
 								class="form-control me-2"
 								type="search"
 								placeholder="Search"
+								aria-label="Search Bar"
 								id="search-input"
 							/>
 							<button class="btn btn-outline-dark" type="submit">Search</button>
 						</form>
+						<script>
+							document
+								.getElementById('search-form')
+								.addEventListener('submit', function (e) {
+									e.preventDefault();
+									const query = document
+										.getElementById('search-input')
+										.value.trim();
+									if (query) {
+										window.location.href = `searchresult.html?query=${encodeURIComponent(
+											query,
+										)}`;
+									}
+								});
+						</script>
+
+						<!-- Cart -->
 						<li class="nav-item ms-lg-3">
 							<a
 								href="checkout.html"
