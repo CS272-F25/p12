@@ -2,15 +2,15 @@
 
 ## Bucky's Brew - <https://cs272-f25.github.io/p12/>
 
-Bucky's Brew is an online coffee shop that sells coffee and coffee related
-products, such as coffee beans, mugs, and brewing equipment. Users will be able
-to explore our items, add products to their cart, and somewhat, go through the
-checkout process. We’ll have a few pages for shopping, one to contact us, and
-one for checkout. We plan to create an almost functional checkout page, with a
-function to add things to the cart, and the possibility to see them in the cart,
-along with a way to fill out information to checkout.
+Bucky's Brew is a responsive e-commerce website dedicated to the sale of premium
+coffee beans, mugs, and professional brewing equipment. The site offers a
+seamless user experience, allowing customers to explore a visual product
+catalog, interact with items, and purchase items through a dynamic shopping cart
+system.
 
-## Code Formating
+## For Developers
+
+### Code Formating
 
 For consistent code formatting we will be using Prettier - Code formatter :
 <https://prettier.io/>
