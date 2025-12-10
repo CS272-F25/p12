@@ -1,171 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Bucky's Brew</title>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bucky's Brew</title>
 
-	<!-- STYLES -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" href="css/main.css" />
-	<link rel="stylesheet" href="css/coffee.css" />
-</head>
+		<!-- STYLES -->
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/main.css" />
+		<link rel="stylesheet" href="css/coffee.css" />
+	</head>
 
-<body>
+	<body>
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-expand-lg bg-light py-3 shadow-sm">
+			<div class="container">
+				<a
+					class="navbar-brand d-flex align-items-center gap-2"
+					href="index.html"
+				>
+					<img src="assets/images/logo.webp" alt="Bucky's Brew" height="50" />
+					<span class="fw-bold">Bucky's Brew</span>
+				</a>
 
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#mainNav"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg bg-light py-3 shadow-sm">
-	<div class="container">
-		<a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-			<img src="assets/images/logo.webp" alt="Bucky's Brew" height="50">
-			<span class="fw-bold">Bucky's Brew</span>
-		</a>
+				<div class="collapse navbar-collapse" id="mainNav">
+					<ul class="navbar-nav ms-auto align-items-lg-center">
+						<li class="nav-item">
+							<a class="nav-link active" href="index.html">Home</a>
+						</li>
 
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+								>Shop</a
+							>
+							<ul class="dropdown-menu">
+								<li>
+									<a class="dropdown-item" href="shopall.html">Shop All</a>
+								</li>
+								<li><a class="dropdown-item" href="shop.html">Products</a></li>
+								<li>
+									<a class="dropdown-item" href="accessories.html"
+										>Accessories</a
+									>
+								</li>
+							</ul>
+						</li>
 
-		<div class="collapse navbar-collapse" id="mainNav">
-			<ul class="navbar-nav ms-auto align-items-lg-center">
+						<li class="nav-item">
+							<a class="nav-link" href="about.html">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="contact.html">Contact</a>
+						</li>
 
-				<li class="nav-item">
-					<a class="nav-link active" href="index.html">Home</a>
-				</li>
+						<form
+							class="d-flex ms-lg-3 my-2 my-lg-0"
+							role="search"
+							id="search-form"
+						>
+							<input
+								class="form-control me-2"
+								type="search"
+								placeholder="Search"
+								id="search-input"
+							/>
+							<button class="btn btn-outline-dark" type="submit">Search</button>
+						</form>
+						<script>
+							document
+								.getElementById('search-form')
+								.addEventListener('submit', function (e) {
+									e.preventDefault();
+									const query = document
+										.getElementById('search-input')
+										.value.trim();
+									if (query) {
+										window.location.href = `searchresult.html?query=${encodeURIComponent(
+											query,
+										)}`;
+									}
+								});
+						</script>
 
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Shop</a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="shopall.html">Shop All</a></li>
-						<li><a class="dropdown-item" href="shop.html">Products</a></li>
-						<li><a class="dropdown-item" href="accessories.html">Accessories</a></li>
+						<li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+							<a href="checkout.html" class="btn btn-primary"> Checkout </a>
+						</li>
 					</ul>
-				</li>
-
-				<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-				<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-
-				<form class="d-flex ms-lg-3 my-2 my-lg-0" role="search" id="search-form">
-					<input class="form-control me-2" type="search" placeholder="Search" id="search-input">
-					<button class="btn btn-outline-dark" type="submit">Search</button>
-				</form>
-				<script>
-				document.getElementById('search-form').addEventListener('submit', function(e) {
-					e.preventDefault();
-					const query = document.getElementById('search-input').value.trim();
-					if (query) {
-						window.location.href = `searchresult.html?query=${encodeURIComponent(query)}`;
-					}
-				});
-				</script>
-
-				<li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-					<a href="checkout.html" class="btn btn-primary">
-						Checkout
-					</a>
-				</li>
-
-			</ul>
-		</div>
-	</div>
-</nav>
-
-<!-- PAGE HEADER -->
-<header class="coffee-header text-center py-5 bg-light">
-	<h1 class="display-5 fw-bold">Bucky's Brew</h1>
-</header>
-
-<!-- INFO SECTION -->
-<section class="container py-5">
-
-	<div class="row g-4">
-
-		<!-- Coffee 101 -->
-		<div class="col-md-6">
-			<div class="card shadow-sm h-100 p-4">
-				<h3 class="text-primary-brown mb-3">Coffee 101</h3>
-				<p>
-					Coffee roasts range from light to dark, each offering a unique flavor experience.
-					<strong>Light roasts</strong> preserve bright, fruity notes for a delicate taste.
-				</p>
-				<p>
-					<strong>Medium roasts</strong> offer balanced acidity, sweetness, and subtle fruit—making
-					them the most popular and versatile option.
-				</p>
-				<p>
-					<strong>Dark roasts</strong> have bold, rich flavors with low acidity and notes of caramel,
-					toasted nuts, and graham cracker.
-				</p>
+				</div>
 			</div>
-		</div>
+		</nav>
 
-		<!-- Matcha Latte -->
-		<div class="col-md-6">
-			<div class="card shadow-sm h-100 p-4">
-				<h3 class="text-primary-brown mb-3">Discover the Art of Matcha</h3>
-				<p>
-					Matcha latte blends vibrant matcha powder with steamed milk for a creamy, earthy drink
-					beloved by both tea and coffee lovers.
-				</p>
-				<p>
-					<strong>What is Matcha Latte?</strong><br>
-					A smooth fusion of matcha and milk, creating an energizing, comforting drink that pairs
-					perfectly with pastries and mornings on the go.
-				</p>
+		<!-- PAGE HEADER -->
+		<header class="coffee-header text-center py-5 bg-light">
+			<h1 class="display-5 fw-bold">Bucky's Brew</h1>
+		</header>
+
+		<!-- INFO SECTION -->
+		<section class="container py-5">
+			<div class="row g-4">
+				<!-- Coffee 101 -->
+				<div class="col-md-6">
+					<div class="card shadow-sm h-100 p-4">
+						<h3 class="text-primary-brown mb-3">Coffee 101</h3>
+						<p>
+							Coffee roasts range from light to dark, each offering a unique
+							flavor experience.
+							<strong>Light roasts</strong> preserve bright, fruity notes for a
+							delicate taste.
+						</p>
+						<p>
+							<strong>Medium roasts</strong> offer balanced acidity, sweetness,
+							and subtle fruit—making them the most popular and versatile
+							option.
+						</p>
+						<p>
+							<strong>Dark roasts</strong> have bold, rich flavors with low
+							acidity and notes of caramel, toasted nuts, and graham cracker.
+						</p>
+					</div>
+				</div>
+
+				<!-- Matcha Latte -->
+				<div class="col-md-6">
+					<div class="card shadow-sm h-100 p-4">
+						<h3 class="text-primary-brown mb-3">Discover the Art of Matcha</h3>
+						<p>
+							Matcha latte blends vibrant matcha powder with steamed milk for a
+							creamy, earthy drink beloved by both tea and coffee lovers.
+						</p>
+						<p>
+							<strong>What is Matcha Latte?</strong><br />
+							A smooth fusion of matcha and milk, creating an energizing,
+							comforting drink that pairs perfectly with pastries and mornings
+							on the go.
+						</p>
+					</div>
+				</div>
 			</div>
-		</div>
+		</section>
 
-	</div>
+		<!-- CART SECTION -->
 
-</section>
+		<section class="container my-5">
+			<h2 class="fw-bold text-center mb-4 text-primary-brown">Your Cart</h2>
 
-<!-- CART SECTION -->
+			<div class="card shadow-sm p-4">
+				<ul id="cart-items" class="list-group mb-3"></ul>
 
-<section class="container my-5">
+				<p class="fs-5 fw-semibold">
+					Total: $<span id="cart-total">0.00</span>
+				</p>
 
-	<h2 class="fw-bold text-center mb-4 text-primary-brown">Your Cart</h2>
+				<div class="d-flex gap-3">
+					<button id="clear-cart" class="btn btn-danger flex-fill">
+						Clear Cart
+					</button>
+					<a href="checkout.html" class="btn btn-primary flex-fill">Checkout</a>
+				</div>
+			</div>
+		</section>
 
-	<div class="card shadow-sm p-4">
+		<!-- PRODUCT MENU -->
 
-		<ul id="cart-items" class="list-group mb-3"></ul>
+		<section class="container py-5 text-center">
+			<h2 class="fw-bold mb-4 text-primary-brown">Our Products</h2>
 
-		<p class="fs-5 fw-semibold">Total: $<span id="cart-total">0.00</span></p>
+			<div id="menu-grid" class="row g-4">
+				<!-- products added dynamically -->
+			</div>
+		</section>
 
-		<div class="d-flex gap-3">
-			<button id="clear-cart" class="btn btn-danger flex-fill">Clear Cart</button>
-			<a href="checkout.html" class="btn btn-primary flex-fill">Checkout</a>
-		</div>
+		<!-- FOOTER -->
+		<footer class="bg-dark text-white py-4 mt-5">
+			<div class="container d-flex justify-content-between flex-wrap gap-3">
+				<p class="m-0">&copy; 2025 Bucky's Brew</p>
+				<div class="d-flex gap-3">
+					<a href="privacypolicy.html" class="text-white">Privacy Policy</a>
+					<a href="tos.html" class="text-white">Terms</a>
+					<a href="contact.html" class="text-white">Contact</a>
+				</div>
+			</div>
+		</footer>
 
-	</div>
-
-</section>
-
-<!-- PRODUCT MENU -->
-
-<section class="container py-5 text-center">
-	<h2 class="fw-bold mb-4 text-primary-brown">Our Products</h2>
-
-	<div id="menu-grid" class="row g-4">
-		<!-- products added dynamically -->
-	</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-dark text-white py-4 mt-5">
-	<div class="container d-flex justify-content-between flex-wrap gap-3">
-		<p class="m-0">&copy; 2025 Bucky's Brew</p>
-		<div class="d-flex gap-3">
-			<a href="privacypolicy.html" class="text-white">Privacy Policy</a>
-			<a href="tos.html" class="text-white">Terms</a>
-			<a href="contact.html" class="text-white">Contact</a>
-		</div>
-	</div>
-</footer>
-
-
-<!-- JS -->
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/coffee.js"></script>
-
-</body>
+		<!-- JS -->
+		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/coffee.js"></script>
+	</body>
 </html>
