@@ -1,0 +1,10 @@
+[
+ { "id": 8, "name": "Cup and Saucer", "price": 12, "image": "cupands.webp" },
+  { "id": 9, "name": "French Press", "price": 25, "image": "frenchpress.webp" },
+  { "id": 10, "name": "Tall Glass Cup", "price": 18, "image": "glass.webp" },
+  { "id": 11, "name": "Short Glass Cup", "price": 14, "image": "glasscup.webp" },
+  { "id": 12, "name": "Reusable Straws", "price": 7, "image": "straws.webp" },
+  { "id": 13, "name": "Whisk", "price": 16, "image": "whisk.webp" },
+  { "id": 14, "name": "Matcha Candle", "price": 20, "image": "matchacandle.webp" },
+  { "id": 15, "name": "Coffee Candle", "price": 20, "image": "coffeecandle.webp" }
+]
