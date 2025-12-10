@@ -1,114 +1,105 @@
-
-
 .site-header,
 .navbar {
-  background: rgba(255,255,255,0.9) !important;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(var(--primary), .15);
+	background: rgba(255, 255, 255, 0.9) !important;
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid rgba(var(--primary), 0.15);
 }
 
 .brand-logo,
 .navbar-brand img {
-  height: 50px !important;
-  width: auto !important;
+	height: 50px !important;
+	width: auto !important;
 }
 
-
-
 .checkout-section {
-  padding: 2rem 0;
+	padding: 2rem 0;
 }
 
 .checkout-section h2,
 .checkout-section h3 {
-  color: rgb(var(--primary));
-  font-weight: 700;
+	color: rgb(var(--primary));
+	font-weight: 700;
 }
 
-
 #cart-preview-list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+	padding: 0;
+	margin: 0;
+	list-style: none;
 }
 
 #cart-preview-list li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: .75rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.75rem 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 #cart-preview-list img {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: .5rem;
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+	border-radius: 0.5rem;
 }
 
 .cart-item-name {
-  font-weight: 500;
+	font-weight: 500;
 }
 
-
 .order-summary p {
-  margin: .3rem 0;
-  font-size: 1rem;
+	margin: 0.3rem 0;
+	font-size: 1rem;
 }
 
 .order-summary strong {
-  font-size: 1.25rem;
-  color: rgb(var(--primary));
+	font-size: 1.25rem;
+	color: rgb(var(--primary));
 }
 
-
 label {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 .form-control {
-  border-radius: .45rem !important;
+	border-radius: 0.45rem !important;
 }
 
 /* Brown focus ring */
 .form-control:focus {
-  border-color: rgb(var(--primary)) !important;
-  box-shadow: 0 0 0 .25rem rgba(var(--primary), .20) !important;
+	border-color: rgb(var(--primary)) !important;
+	box-shadow: 0 0 0 0.25rem rgba(var(--primary), 0.2) !important;
 }
-
-
 
 /* General brown button */
 .btn-brown,
 .btn-checkout {
-  background-color: rgb(var(--primary)) !important;
-  color: white !important;
-  border: none !important;
-  border-radius: .5rem !important;
-  padding: .75rem 1.2rem;
-  font-weight: 600;
-  transition: background-color .25s ease;
+	background-color: rgb(var(--primary)) !important;
+	color: white !important;
+	border: none !important;
+	border-radius: 0.5rem !important;
+	padding: 0.75rem 1.2rem;
+	font-weight: 600;
+	transition: background-color 0.25s ease;
 }
 
 /* Hover state */
 .btn-brown:hover,
 .btn-checkout:hover {
-  background-color: rgb(var(--accent)) !important;
+	background-color: rgb(var(--accent)) !important;
 }
 
 /* Make checkout button full width */
 .btn-checkout {
-  font-size: 1.1rem;
-  width: 100%;
+	font-size: 1.1rem;
+	width: 100%;
 }
 
 .card {
-  border-radius: .75rem !important;
-  box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.10);
-  border: none;
+	border-radius: 0.75rem !important;
+	box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+	border: none;
 }
 
 .card h4 {
-  color: rgb(var(--primary));
+	color: rgb(var(--primary));
 }

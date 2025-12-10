@@ -1,6 +1,6 @@
 /* ABOUT PAGE HERO — FIXED SMALLER SIZE */
 .about-hero {
-  height: 40vh;              /* Smaller landing image */
+  height: 40vh;        
   max-height: 420px;
   position: relative;
   overflow: hidden;

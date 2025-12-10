@@ -1,101 +1,71 @@
-// ===========================
-// PRODUCT LIST (Coffee + Accessories)
-// ===========================
-const ITEMS = [
-  { id: 0, name: "Medium Roast Blend", price: 8, image: "mediumroast.webp" },
-  { id: 1, name: "Espresso Dark Roast Blend", price: 8, image: "espressodark.webp" },
-  { id: 2, name: "Vanilla Blend", price: 8, image: "vanilla.webp" },
-  { id: 3, name: "Light Roast Blend", price: 9, image: "lightroast.webp" },
-  { id: 4, name: "Peppermint Mocha Blend", price: 12, image: "peppermintmocha.webp" },
-  { id: 5, name: "Original Matcha", price: 10, image: "originalmatcha.webp" },
-  { id: 6, name: "Vanilla Matcha", price: 10, image: "vanillamatcha.webp" },
-  { id: 7, name: "Honey Matcha", price: 11, image: "honeymatcha.webp" },
+let ITEMS = [];
 
-  { id: 8, name: "Cup and Saucer", price: 12, image: "cupands.webp" },
-  { id: 9, name: "French Press", price: 25, image: "frenchpress.webp" },
-  { id: 10, name: "Tall Glass Cup", price: 18, image: "glass.webp" },
-  { id: 11, name: "Short Glass Cup", price: 14, image: "glasscup.webp" },
-  { id: 12, name: "Reusable Straws", price: 7, image: "straws.webp" },
-  { id: 13, name: "Whisk", price: 16, image: "whisk.webp" },
-  { id: 14, name: "Matcha Candle", price: 20, image: "matchacandle.webp" },
-  { id: 15, name: "Coffee Candle", price: 20, image: "coffeecandle.webp" }
-];
+fetch('js/shopall.json')
+	.then((res) => res.json())
+	.then((data) => {
+		ITEMS = data;
+		console.log('Products loaded:', ITEMS);
 
+		renderMenuItems();
+		updateCartUI();
+	})
+	.catch((err) => console.error('Error loading products.json:', err));
 
-/* =========================================
-   CART STORAGE (shared system)
-========================================= */
 function loadCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
+	return JSON.parse(localStorage.getItem('cart')) || [];
 }
 
 function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart));
+	localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-
-/* =========================================
-   ADD TO CART (Stacks Quantities)
-========================================= */
 function addToCart(id) {
-  let cart = loadCart();
-  const item = ITEMS.find(i => i.id === id);
-  if (!item) return;
+	let cart = loadCart();
+	const item = ITEMS.find((i) => i.id === id);
+	if (!item) return;
 
-  const existing = cart.find(i => i.id === id);
+	const existing = cart.find((i) => i.id === id);
 
-  if (existing) {
-    existing.quantity += 1;
-  } else {
-    cart.push({ ...item, quantity: 1 });
-  }
+	if (existing) {
+		existing.quantity += 1;
+	} else {
+		cart.push({ ...item, quantity: 1 });
+	}
 
-  saveCart(cart);
-  updateCartUI();
+	saveCart(cart);
+	updateCartUI();
 }
 
-
-/* =========================================
-   CHANGE QUANTITY
-========================================= */
 function changeQty(id, amount) {
-  let cart = loadCart();
-  const item = cart.find(i => i.id === id);
+	let cart = loadCart();
+	const item = cart.find((i) => i.id === id);
 
-  if (!item) return;
+	if (!item) return;
 
-  item.quantity += amount;
+	item.quantity += amount;
 
-  if (item.quantity <= 0) {
-    cart = cart.filter(i => i.id !== id);
-  }
+	if (item.quantity <= 0) {
+		cart = cart.filter((i) => i.id !== id);
+	}
 
-  saveCart(cart);
-  updateCartUI();
+	saveCart(cart);
+	updateCartUI();
 }
 
-
-/* =========================================
-   REMOVE ITEM
-========================================= */
 function removeItem(id) {
-  const cart = loadCart().filter(i => i.id !== id);
-  saveCart(cart);
-  updateCartUI();
+	const cart = loadCart().filter((i) => i.id !== id);
+	saveCart(cart);
+	updateCartUI();
 }
 
-
-/* =========================================
-   RENDER PRODUCTS
-========================================= */
 function renderMenuItems() {
-  const grid = document.getElementById("menu-grid");
-  if (!grid) return;
+	const grid = document.getElementById('menu-grid');
+	if (!grid) return;
 
-  grid.innerHTML = "";
+	grid.innerHTML = '';
 
-  ITEMS.forEach(item => {
-    grid.innerHTML += `
+	ITEMS.forEach((item) => {
+		grid.innerHTML += `
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="card h-100 shadow-sm">
           <img src="assets/images/${item.image}" 
@@ -115,28 +85,24 @@ function renderMenuItems() {
         </div>
       </div>
     `;
-  });
+	});
 }
 
-document.addEventListener("DOMContentLoaded", renderMenuItems);
+document.addEventListener('DOMContentLoaded', renderMenuItems);
 
-
-/* =========================================
-   RENDER CART UI
-========================================= */
 function updateCartUI() {
-  const list = document.getElementById("cart-items");
-  const totalBox = document.getElementById("cart-total");
-  if (!list || !totalBox) return;
+	const list = document.getElementById('cart-items');
+	const totalBox = document.getElementById('cart-total');
+	if (!list || !totalBox) return;
 
-  let cart = loadCart();
-  let total = 0;
-  list.innerHTML = "";
+	let cart = loadCart();
+	let total = 0;
+	list.innerHTML = '';
 
-  cart.forEach(item => {
-    total += item.price * item.quantity;
+	cart.forEach((item) => {
+		total += item.price * item.quantity;
 
-    list.innerHTML += `
+		list.innerHTML += `
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <div class="d-flex gap-3 align-items-center">
           <img src="assets/images/${item.image}" 
@@ -148,27 +114,29 @@ function updateCartUI() {
         </div>
 
         <div class="d-flex gap-2">
-          <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, -1)">−</button>
-          <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${item.id}, 1)">+</button>
-          <button class="btn btn-sm btn-danger" onclick="removeItem(${item.id})">✖</button>
+          <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${
+						item.id
+					}, -1)">−</button>
+          <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${
+						item.id
+					}, 1)">+</button>
+          <button class="btn btn-sm btn-danger" onclick="removeItem(${
+						item.id
+					})">✖</button>
         </div>
       </li>
     `;
-  });
+	});
 
-  totalBox.textContent = total.toFixed(2);
+	totalBox.textContent = total.toFixed(2);
 }
 
 updateCartUI();
 
-
-/* =========================================
-   CLEAR CART
-========================================= */
-const clearBtn = document.getElementById("clear-cart");
+const clearBtn = document.getElementById('clear-cart');
 if (clearBtn) {
-  clearBtn.addEventListener("click", () => {
-    saveCart([]);
-    updateCartUI();
-  });
+	clearBtn.addEventListener('click', () => {
+		saveCart([]);
+		updateCartUI();
+	});
 }
