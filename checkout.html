@@ -136,7 +136,13 @@
 							<form id="checkout-form" class="row g-3">
 								<div class="col-md-12">
 									<label class="form-label">Full Name</label>
-									<input type="text" class="form-control" id="name" required />
+									<input
+										type="text"
+										class="form-control"
+										id="name"
+										aria-label="Full Name"
+										required
+									/>
 								</div>
 
 								<div class="col-md-12">
@@ -145,6 +151,7 @@
 										type="email"
 										class="form-control"
 										id="email"
+										aria-label="Email"
 										required
 									/>
 								</div>
@@ -155,6 +162,7 @@
 										type="text"
 										class="form-control"
 										id="address"
+										aria-label="Adress"
 										required
 									/>
 								</div>
@@ -168,6 +176,7 @@
 										class="form-control"
 										id="card"
 										maxlength="19"
+										aria-label="Payment Card Number"
 										required
 									/>
 								</div>
@@ -178,6 +187,7 @@
 										type="text"
 										class="form-control"
 										id="expiry"
+										aria-label="Expiry Date - Month Month / Year Year"
 										required
 									/>
 								</div>
@@ -189,6 +199,7 @@
 										class="form-control"
 										id="cvv"
 										maxlength="3"
+										aria-label="CVV Security Code"
 										required
 									/>
 								</div>
