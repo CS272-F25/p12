@@ -110,7 +110,7 @@ function updateCartUI() {
 		list.innerHTML += `
 			<li class="list-group-item d-flex justify-content-between align-items-center">
 				<div class="d-flex gap-3 align-items-center">
-					<img src="assets/images/${item.image}" 
+					<img src="assets/images/${item.image}" alt="${item.name}"
 							 style="width:45px; height:45px; border-radius:6px; object-fit:cover;">
 					<div>
 						<strong>${item.name}</strong><br>
