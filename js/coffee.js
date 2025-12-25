@@ -1,114 +1,150 @@
-const ITEMS = [ // TODO: Move this to a JSON file and fetch it
-  { id: 0, name: 'Latte', price: 4.5, image: 'gallery1.jpg' },
-  { id: 1, name: 'Cappuccino', price: 4.0, image: 'gallery2.jpg' },
-  { id: 2, name: 'Americano', price: 3.75, image: 'gallery3.jpg' },
-  { id: 3, name: 'Blueberry Muffin', price: 3.25, image: 'gallery4.jpg' },
-  { id: 4, name: 'Chocolate Chip Cookie', price: 2.75, image: 'gallery1.jpg' },
-  { id: 5, name: 'Chai Tea', price: 3.5, image: 'gallery2.jpg' },
-];
+let ITEMS = [];
 
+fetch('js/coffee.json')
+	.then((res) => res.json())
+	.then((data) => {
+		ITEMS = data;
+		console.log('Products loaded:', ITEMS);
+
+		renderMenuItems();
+		updateCartUI();
+	})
+	.catch((err) => console.error('Error loading products.json:', err));
+
+/* CART STORAGE HELPERS */
+function loadCart() {
+	return JSON.parse(localStorage.getItem('cart')) || [];
+}
+
+function saveCart(cart) {
+	localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+//ADD TO CART  (STACK QUANTITIES)
+function addToCart(id) {
+	let cart = loadCart();
+	const item = ITEMS.find((i) => i.id === id);
+	if (!item) return;
+
+	const existing = cart.find((i) => i.id === id);
+	if (existing) {
+		existing.quantity += 1;
+	} else {
+		cart.push({ ...item, quantity: 1 });
+	}
+
+	saveCart(cart);
+	updateCartUI();
+}
+
+//HANGE QUANTITY
+function changeQty(id, amount) {
+	let cart = loadCart();
+	const item = cart.find((i) => i.id === id);
+	if (!item) return;
+
+	item.quantity += amount;
+	if (item.quantity <= 0) {
+		cart = cart.filter((i) => i.id !== id);
+	}
+
+	saveCart(cart);
+	updateCartUI();
+}
+
+//REMOVE ITEM
+function removeItem(id) {
+	let cart = loadCart().filter((i) => i.id !== id);
+	saveCart(cart);
+	updateCartUI();
+}
+
+//RENDER SHOP ITEMS
 function renderMenuItems() {
-  const grid = document.getElementById('menu-grid');
-  if (!grid) return;
+	const grid = document.getElementById('menu-grid');
+	if (!grid) return;
 
-  grid.innerHTML = '';
+	grid.innerHTML = '';
 
-  ITEMS.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'card';
+	ITEMS.forEach((item) => {
+		grid.innerHTML += `
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/images/${item.image}" class="card-img-top" alt="${
+			item.name
+		}" style="height:170px; object-fit:cover;">
 
-    const img = document.createElement('img');
-    img.src = `assets/images/${item.image}`;
-    img.alt = item.name;
-    card.appendChild(img);
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">${item.name}</h5>
+            <p class="card-text mb-3">$${item.price.toFixed(2)}</p>
 
-    const h3 = document.createElement('h3');
-    h3.textContent = item.name;
-    card.appendChild(h3);
-
-    const p = document.createElement('p');
-    p.textContent = `$${item.price.toFixed(2)}`;
-    card.appendChild(p);
-
-    const btn = document.createElement('button');
-    btn.className = 'add-cart';
-    btn.setAttribute('data-name', item.name);
-    btn.setAttribute('data-price', item.price.toString());
-    btn.textContent = 'Add to Cart';
-    card.appendChild(btn);
-
-    grid.appendChild(card);
-  });
-
-  document.querySelectorAll(".add-cart").forEach(button => {
-    button.addEventListener("click", () => {
-      const name = button.getAttribute("data-name");
-      const price = parseFloat(button.getAttribute("data-price"));
-      addToCart(name, price);
-    });
-  });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', renderMenuItems);
-} else {
-  renderMenuItems();
-}
-
-const cartItems = [];
-const cartList = document.getElementById("cart-items");
-const cartTotal = document.getElementById("cart-total");
-const clearBtn = document.getElementById("clear-cart");
-
-try {
-  const storedTotal = localStorage.getItem('cart_total');
-  if (cartTotal && storedTotal !== null) {
-    cartTotal.textContent = Number(storedTotal).toFixed(2);
-  }
-} catch (e) {
-  console.error('Failed to read cart_total from localStorage', e);
-}
-
-
-function addToCart(name, price) {
-  cartItems.push({ name, price });
-  updateCart();
-}
-
-function updateCart() {
-  cartList.innerHTML = "";
-  let total = 0;
-  cartItems.forEach((item, index) => {
-    total += item.price;
-    const li = document.createElement("li");
-    li.innerHTML = `
-      ${item.name} - $${item.price.toFixed(2)}
-      <button class="remove-item" data-index="${index}">✖</button>
+            <button class="btn btn-primary w-100 mt-auto"
+                    onclick="addToCart(${item.id})">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
     `;
-    cartList.appendChild(li);
-  });
-  if (cartTotal) cartTotal.textContent = total.toFixed(2);
-
-  try {
-    localStorage.setItem('cart_total', total.toFixed(2));
-  } catch (err) {
-    console.error('Failed to save cart total to localStorage', err);
-  }
-
-
-  document.querySelectorAll(".remove-item").forEach(btn => {
-    btn.addEventListener("click", e => {
-      const i = e.target.getAttribute("data-index");
-      cartItems.splice(i, 1);
-      updateCart();
-    });
-  });
+	});
 }
 
+document.addEventListener('DOMContentLoaded', renderMenuItems);
+
+//RENDER CART UI
+function updateCartUI() {
+	const list = document.getElementById('cart-items');
+	const totalBox = document.getElementById('cart-total');
+
+	if (!list || !totalBox) return;
+
+	let cart = loadCart();
+	list.innerHTML = '';
+	let total = 0;
+
+	cart.forEach((item) => {
+		total += item.price * item.quantity;
+
+		list.innerHTML += `
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="d-flex gap-3 align-items-center">
+          <img src="assets/images/${item.image}" alt="${
+			item.name
+		}" style="width:45px; height:45px; border-radius:6px; object-fit:cover;">
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>${item.quantity} × $${item.price.toFixed(2)}</small>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${
+						item.id
+					}, -1)">−</button>
+          <button class="btn btn-sm btn-outline-secondary" onclick="changeQty(${
+						item.id
+					}, 1)">+</button>
+          <button class="btn btn-sm btn-danger" onclick="removeItem(${
+						item.id
+					})">✖</button>
+        </div>
+      </li>
+    `;
+	});
+
+	totalBox.textContent = total.toFixed(2);
+}
+
+// Load when page opens
+updateCartUI();
+
+/* =========================================
+   CLEAR CART
+========================================= */
+const clearBtn = document.getElementById('clear-cart');
 if (clearBtn) {
-  clearBtn.addEventListener("click", () => {
-    cartItems.length = 0;
-    updateCart();
-  });
+	clearBtn.addEventListener('click', () => {
+		saveCart([]);
+		updateCartUI();
+	});
 }
-

@@ -1,6 +1,6 @@
 let ITEMS = [];
 
-fetch('js/shopall.json')
+fetch('js/accessories.json')
 	.then((res) => res.json())
 	.then((data) => {
 		ITEMS = data;
@@ -10,6 +10,8 @@ fetch('js/shopall.json')
 		updateCartUI();
 	})
 	.catch((err) => console.error('Error loading products.json:', err));
+
+/* CART FUNCTIONS */
 
 function loadCart() {
 	return JSON.parse(localStorage.getItem('cart')) || [];
@@ -25,7 +27,6 @@ function addToCart(id) {
 	if (!item) return;
 
 	const existing = cart.find((i) => i.id === id);
-
 	if (existing) {
 		existing.quantity += 1;
 	} else {
@@ -39,7 +40,6 @@ function addToCart(id) {
 function changeQty(id, amount) {
 	let cart = loadCart();
 	const item = cart.find((i) => i.id === id);
-
 	if (!item) return;
 
 	item.quantity += amount;
@@ -53,14 +53,18 @@ function changeQty(id, amount) {
 }
 
 function removeItem(id) {
-	const cart = loadCart().filter((i) => i.id !== id);
+	let cart = loadCart().filter((i) => i.id !== id);
 	saveCart(cart);
 	updateCartUI();
 }
 
+/* RENDER MENU */
+
 function renderMenuItems() {
 	const grid = document.getElementById('menu-grid');
 	if (!grid) return;
+
+	if (ITEMS.length === 0) return; // Stops blank rendering BEFORE JSON loads
 
 	grid.innerHTML = '';
 
@@ -68,10 +72,9 @@ function renderMenuItems() {
 		grid.innerHTML += `
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/images/${item.image}" 
-               class="card-img-top" 
-               alt="${item.name}" 
-               style="height:170px; object-fit:cover;">
+          <img src="assets/images/${item.image}" class="card-img-top" alt="${
+			item.name
+		}" style="height:170px; object-fit:cover;">
 
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">${item.name}</h5>
@@ -88,7 +91,7 @@ function renderMenuItems() {
 	});
 }
 
-document.addEventListener('DOMContentLoaded', renderMenuItems);
+/* UPDATE CART DISPLAY */
 
 function updateCartUI() {
 	const list = document.getElementById('cart-items');
@@ -105,8 +108,9 @@ function updateCartUI() {
 		list.innerHTML += `
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <div class="d-flex gap-3 align-items-center">
-          <img src="assets/images/${item.image}" alt="${item.name}" 
-               style="width:45px; height:45px; border-radius:6px; object-fit:cover;">
+          <img src="assets/images/${item.image}" alt="${
+			item.name
+		}" style="width:45px; height:45px; border-radius:6px; object-fit:cover;">
           <div>
             <strong>${item.name}</strong><br>
             <small>${item.quantity} × $${item.price.toFixed(2)}</small>
@@ -131,11 +135,9 @@ function updateCartUI() {
 	totalBox.textContent = total.toFixed(2);
 }
 
-updateCartUI();
-
-const clearBtn = document.getElementById('clear-cart');
-if (clearBtn) {
-	clearBtn.addEventListener('click', () => {
+const clearBtn2 = document.getElementById('clear-cart');
+if (clearBtn2) {
+	clearBtn2.addEventListener('click', () => {
 		saveCart([]);
 		updateCartUI();
 	});

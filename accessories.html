@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Bucky's Brew</title>
+		<title>Accessories - Bucky's Brew</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" href="css/main.css" />
-		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/coffee.css" />
 	</head>
 
 	<body>
@@ -136,103 +136,44 @@
 			</div>
 		</nav>
 
-		<section class="hero custom-hero">
-			<img
-				src="assets/images/landing.jpg"
-				class="hero-photo"
-				alt="Coffee on a plate"
-			/>
+		<!-- PAGE HEADER -->
+		<header class="coffee-header text-center py-5 bg-light">
+			<h1 class="display-5 fw-bold">Bucky's Brew</h1>
+		</header>
 
-			<div class="hero-text-overlay">
-				<h1>Welcome to Bucky's Brew</h1>
-				<p>Explore our Products</p>
-				<a href="shop.html" class="hero-btn">Shop Now</a>
-			</div>
-		</section>
+		<!-- CART SECTION -->
+		<section class="container my-5">
+			<h2 class="fw-bold text-center mb-4">Your Cart</h2>
 
-		<!-- 2. Featured Collections -->
-		<section class="featured">
-			<h2>Featured Collections</h2>
-			<div class="featured-grid">
-				<div class="card">
-					<img
-						src="assets/images/coffee.jpg"
-						alt="Coffee & Espresso Collection"
-					/>
-					<h3>Coffee & Espresso</h3>
-					<a href="shop.html" class="btn">Shop Now</a>
-				</div>
+			<div class="card shadow-sm border rounded p-4">
+				<ul id="cart-items" class="list-group mb-3"></ul>
 
-				<div class="card">
-					<img src="assets/images/matcha.jpg" alt="Matcha Collection" />
-					<h3>Matcha</h3>
-					<a href="shop.html" class="btn">Shop Now</a>
-				</div>
+				<p class="fs-5 fw-semibold">
+					Total: $<span id="cart-total">0.00</span>
+				</p>
 
-				<div class="card">
-					<img
-						src="assets/images/accessories.jpg"
-						alt="Accessories Collection"
-					/>
-					<h3>Accessories</h3>
-					<a href="accessories.html" class="btn">Shop Now</a>
+				<!-- BUTTONS SIDE BY SIDE -->
+				<div class="d-flex gap-3 mt-3">
+					<button id="clear-cart" class="btn btn-danger flex-fill">
+						Clear Cart
+					</button>
+
+					<a href="checkout.html" class="btn btn-primary flex-fill">
+						Proceed to Checkout
+					</a>
 				</div>
 			</div>
 		</section>
-
-		<!-- 3. About -->
-		<section class="about">
-			<h2>Our Story</h2>
-			<p>
-				Bucky’s Brew began with a simple idea: coffee should feel like home.
-				Fueled by the spirit of Madison and the cozy energy of campus life, we
-				set out to craft brews and accessories that bring warmth into every cup.
-				From small–batch blends to thoughtfully designed essentials, every item
-				we offer is made with intention, community, and comfort in mind.
-			</p>
-			<a href="about.html" class="btn">Learn More</a>
-		</section>
-
-		<!-- 4. Testimonials -->
-		<section class="testimonials">
-			<h2>What People Say</h2>
-			<div class="quotes">
-				<blockquote>
-					“Bucky’s Brew has become part of my morning ritual. The flavors are
-					rich, the quality is consistent, and everything feels made with care.”
-					<cite>— Emily R.</cite>
-				</blockquote>
-
-				<blockquote>
-					“I ordered a bag of their espresso and a mug — both exceeded my
-					expectations. The packaging was beautiful and the coffee tastes
-					amazing.”
-					<cite>— Marcus T.</cite>
-				</blockquote>
-
-				<blockquote>
-					“The matcha is some of the best I've tried. Smooth, vibrant, and not
-					too bitter — I’m officially obsessed.”
-					<cite>— Haley B.</cite>
-				</blockquote>
-			</div>
-		</section>
-
-		<!-- 6. Gallery -->
-		<section class="gallery">
-			<h2>From Our Community</h2>
-			<div class="gallery-grid">
-				<img src="assets/images/gallery1.jpg" alt="Coffee in a pink glass" />
-				<img src="assets/images/gallery2.jpg" alt="Pumpkin Pie coffee" />
-				<img src="assets/images/gallery3.jpg" alt="Coffee with a leaf swirl" />
-				<img src="assets/images/gallery4.jpg" alt="Coffee in a shot glass" />
-			</div>
+		<!-- PRODUCT MENU -->
+		<section class="container my-5">
+			<h2 class="text-center mb-4 fw-bold">Accessories</h2>
+			<div id="menu-grid" class="row g-4"></div>
 		</section>
 
 		<!-- JS -->
 		<script src="js/bootstrap.bundle.min.js"></script>
+		<script src="js/accessories.js"></script>
 
-		<!-- Begin Footer -->
 		<!-- FOOTER -->
 		<footer class="bg-dark text-white py-4 mt-5">
 			<div class="container d-flex justify-content-between align-items-center">
@@ -244,7 +185,5 @@
 				</nav>
 			</div>
 		</footer>
-
-		<!-- End Footer -->
 	</body>
 </html>
